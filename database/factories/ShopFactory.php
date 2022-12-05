@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Shop;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
@@ -16,6 +17,8 @@ class ShopFactory extends Factory
      *
      * @return array<string, mixed>
      */
+    //protected $model = Shop::class;
+
     public function definition()
     {
         $name = $this->faker->sentence(2);

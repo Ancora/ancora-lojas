@@ -4,7 +4,9 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-use App\Models\Order;
+use App\Models\Category;
+use App\Models\Photo;
+use App\Models\Product;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -17,13 +19,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call([
-            UserSeeder::class,
-            ShopSeeder::class,
-            OrderSeeder::class,
-            ProductSeeder::class,
-            /* PhotoSeeder::class, */
-            CategorySeeder::class,
-        ]);
+        Category::factory(3)->create();
     }
 }

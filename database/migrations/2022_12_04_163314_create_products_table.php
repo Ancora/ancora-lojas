@@ -29,8 +29,8 @@ return new class extends Migration
             $table->string('slug');
 
             $table->timestamps();
-            $table->foreign('shop_id')->references('id')->on('shops');
-            $table->foreign('order_id')->references('id')->on('orders');
+            $table->foreign('shop_id')->references('id')->on('shops')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('order_id')->references('id')->on('orders')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

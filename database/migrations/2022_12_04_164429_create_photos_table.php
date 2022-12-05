@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('photo_url');
 
             $table->timestamps();
-            $table->foreign('product_id')->references('id')->on('products');
+            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

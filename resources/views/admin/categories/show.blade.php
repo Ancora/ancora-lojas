@@ -17,17 +17,24 @@
                 @endauth
             </div>
         @endif
-        @foreach ($categories as $category)
-            <div class="card">
-                <div class="card-body">
-                    <div class="card-title">
-                        {{ $category->name }}
-                    </div>
-                    <div class="card-subtitle">
-                        {{ $category->description }}
+
+        <div class="flex flex-wrap md:flex-row items-center justify-between">
+            @foreach ($categories as $category)
+                {{-- <div class="min-h-full pb-12"> --}}
+                <div class="2xl:w-1/3 flex flex-row items-center justify-center px-8 md:px-32 lg:px-16 2xl:px-0">
+                    <div class="w-full grid grid-cols-1 p-2">
+                        <div class="card shadow-2xl rounded-lg py-4">
+                            <img src="/../../assets/img/no-photo.jpg" alt="" class="rounded-lg">
+                            <p class="text-xl text-center font-bold text-blue-600">{{ $category->name }}</p>
+                            <p class="text-center py-8 h-64">
+                                {{ $category->description }}
+                            </p>
+                        </div>
                     </div>
                 </div>
-            </div>
-        @endforeach
+                {{-- </div> --}}
+            @endforeach
+        </div>
+
     </div>
 @endsection

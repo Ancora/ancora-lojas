@@ -8,10 +8,22 @@ use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
-    public function show()
+    /* Lista */
+    public function index()
     {
         $categories = Category::all();
 
-        return view('admin.categories.show', compact('categories'));
+        return view('admin.categories.index', compact('categories'));
+    }
+
+    /* Cadastro */
+    public function create()
+    {
+        return view('admin.categories.create');
+    }
+
+    public function store()
+    {
+        return ('ok');
     }
 }

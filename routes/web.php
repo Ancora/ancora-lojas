@@ -20,7 +20,9 @@ Route::get('/', function () {
     return view('home');
 });
 /* Admin */
-Route::get('/admin/categories', [CategoryController::class, 'show']);
+Route::get('/admin/categories', [CategoryController::class, 'index'])->name('admin.categories.index');
+Route::get('/admin/categories/create', [CategoryController::class, 'create'])->name('admin.categories.create');
+Route::post('/admin/categories/store', [CategoryController::class, 'store'])->name('admin.categories.store');
 /* Fim */
 
 Route::get('/dashboard', function () {

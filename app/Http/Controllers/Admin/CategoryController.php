@@ -35,4 +35,20 @@ class CategoryController extends Controller
 
         return Redirect::route('admin.categories.create')->with('success', 'Categoria criada com sucesso!');
     }
+
+    /* Edição */
+    public function edit(Category $category)
+    {
+        return view('admin.categories.edit', compact('category'));
+    }
+
+    public function update(Category $category, CategoryRequest $request)
+    {
+        $data = $request->validated();
+        $data['slug'] = Str::slug($data['name']);
+
+        $category->update($data);
+
+        return Redirect::route('admin.categories.index')->with('success', 'Categoria alterada com sucesso!');
+    }
 }

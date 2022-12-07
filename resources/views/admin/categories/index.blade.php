@@ -2,7 +2,7 @@
 
 @section('content')
     {{-- Botão para novas categorias --}}
-    <div class="mx-20">
+    <div class="mx-20 mt-20">
         <button type="submit"
             class="bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-2 mb-2 border border-green-500 rounded"><a
                 href="{{ route('admin.categories.create') }}">Cadastrar</a></button>
@@ -36,10 +36,11 @@
                         <td class="p-2 md:border md:border-grey-500 text-left md:table-cell">
                             <span class="flex justify-start  w-1/3 md:hidden font-bold">Ações: </span>
                             <span class="flex justify-evenly">
+                                <button type="submit"
+                                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 border border-blue-500 rounded"><a
+                                        href="{{ route('admin.categories.edit', ['category' => $category->id]) }}">Editar</a></button>
                                 <button
-                                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 border border-blue-500 rounded">Edit</button>
-                                <button
-                                    class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 border border-red-500 rounded">Delete</button>
+                                    class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 border border-red-500 rounded">Excluir</button>
                             </span>
                         </td>
                     </tr>

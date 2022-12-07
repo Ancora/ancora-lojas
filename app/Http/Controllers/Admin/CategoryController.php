@@ -3,8 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CategoryRequest;
 use App\Models\Category;
+use Illuminate\Console\View\Components\Alert;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Str;
 
 class CategoryController extends Controller
 {
@@ -22,8 +26,13 @@ class CategoryController extends Controller
         return view('admin.categories.create');
     }
 
-    public function store()
+    public function store(CategoryRequest $request)
     {
-        return ('ok');
+        $data = $request->validated();
+        $data['slug'] = Str::slug($data['name']);
+
+        Category::create($data);
+
+        return Redirect::route('admin.categories.create')->with('success', 'Categoria criada com sucesso!');
     }
 }

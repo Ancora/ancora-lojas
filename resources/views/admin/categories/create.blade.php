@@ -5,7 +5,7 @@
     <div class="mt-10 w-screen">
         <div class="w-1/2 mx-auto bg-gradient-to-b from-blue-800 to-blue-600 h-80 rounded-lg"></div>
         <div class="w-1/2 mx-auto px-6 sm:px-6 lg:px-8 mb-12">
-            <div class="bg-gray-900 w-full shadow rounded-lg p-8 sm:p-12 -mt-72 border-2 border-blue-800">
+            <div class="bg-gray-900 w-full shadow rounded-t-full p-8 sm:p-12 -mt-72 border-2 border-blue-800">
                 <p class="text-3xl font-bold leading-7 text-center text-white">Cadastrar Categoria</p>
                 {{-- Form --}}
                 <form action="{{ route('admin.categories.store') }}" method="post" enctype="multipart/form-data">

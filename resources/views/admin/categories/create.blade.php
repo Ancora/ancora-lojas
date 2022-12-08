@@ -36,7 +36,7 @@
                     </div>
                     <div class="flex w-full">
                         <div class="flex items-center justify-start w-1/2">
-                            <button type="submit"
+                            <button
                                 class="py-1 px-2 mb-2 mt-4 bg-orange-500 hover:bg-orange-700 text-white font-bold border border-orange-500 rounded focus:ring-2 focus:ring-offset-2 focus:ring-blue-700 focus:outline-none">
                                 <a href="{{ route('admin.categories.index') }}">Voltar</a>
                             </button>

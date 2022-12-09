@@ -9,6 +9,7 @@ use Illuminate\Console\View\Components\Alert;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 
 class CategoryController extends Controller
 {
@@ -30,6 +31,13 @@ class CategoryController extends Controller
     {
         $data = $request->validated();
         $data['slug'] = Str::slug($data['name']);
+
+        /* Imagem */
+        if (!empty($data['image']) && $data['image']->isValid()) {
+            $file = $data['image'];
+            $path = $file->store('public');
+            $data['image'] = $path;
+        }
 
         Category::create($data);
 

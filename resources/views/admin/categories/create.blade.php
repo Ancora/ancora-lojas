@@ -12,30 +12,45 @@
                 {{-- Form --}}
                 <form action="{{ route('admin.categories.store') }}" method="post" enctype="multipart/form-data">
                     @csrf
-                    <div class="md:flex items-center mt-8">
-                        <div class="w-full flex flex-col">
-                            <label class="font-semibold leading-none text-gray-300">Nome</label>
-                            <input type="text" name="name" value="{{ old('name') }}"
-                                class="leading-none text-gray-50 p-3 focus:outline-none focus:border-blue-700 mt-4 border-0 bg-gray-800 rounded" />
-                            @error('name')
-                                <span class="text-red-600">
-                                    {{ $message }}
-                                </span>
-                            @enderror
-                        </div>
+                    {{-- Nome --}}
+                    {{-- <div class="md:flex items-center mt-8"> --}}
+                    <div class="w-full flex flex-col mt-8">
+                        <label class="font-semibold leading-none text-gray-300">Nome</label>
+                        <input type="text" name="name" value="{{ old('name') }}"
+                            class="leading-none text-gray-50 p-3 focus:outline-none focus:border-blue-700 mt-4 border-0 bg-gray-800 rounded" />
+                        @error('name')
+                            <span class="text-red-600">
+                                {{ $message }}
+                            </span>
+                        @enderror
                     </div>
-                    <div>
-                        <div class="w-full flex flex-col mt-8">
-                            <label class="font-semibold leading-none text-gray-300">Descrição</label>
-                            <textarea type="text" name="description"
-                                class="h-20 text-base leading-none text-gray-50 p-3 focus:outline-none focus:border-blue-700 mt-4 bg-gray-800 border-0 rounded">{{ old('description') }}</textarea>
-                            @error('description')
-                                <span class="text-red-600">
-                                    {{ $message }}
-                                </span>
-                            @enderror
-                        </div>
+                    {{-- </div> --}}
+                    {{-- <div> --}}
+                    {{-- Descrição --}}
+                    <div class="w-full flex flex-col mt-8">
+                        <label class="font-semibold leading-none text-gray-300">Descrição</label>
+                        <textarea type="text" name="description"
+                            class="h-20 text-base leading-none text-gray-50 p-3 focus:outline-none focus:border-blue-700 mt-4 bg-gray-800 border-0 rounded">{{ old('description') }}</textarea>
+                        @error('description')
+                            <span class="text-red-600">
+                                {{ $message }}
+                            </span>
+                        @enderror
                     </div>
+                    {{-- </div>
+                    <div> --}}
+                    {{-- Imagem --}}
+                    <div class="w-full flex flex-col mt-8">
+                        <label class="font-semibold leading-none text-gray-300 mb-4">Imagem</label>
+                        <input type="file" id="image" name="image" value="{{ old('imagem') }}"
+                            class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                        @error('image')
+                            <span class="text-red-600">
+                                {{ $message }}
+                            </span>
+                        @enderror
+                    </div>
+                    {{-- </div> --}}
                     <div class="flex w-full">
                         <div class="flex items-center justify-start w-1/2">
                             <button

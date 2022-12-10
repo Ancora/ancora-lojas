@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -26,6 +27,9 @@ Route::post('/admin/categories/store', [CategoryController::class, 'store'])->na
 Route::get('/admin/categories/{category}/edit', [CategoryController::class, 'edit'])->name('admin.categories.edit');
 Route::post('/admin/categories/{category}', [CategoryController::class, 'update'])->name('admin.categories.update');
 Route::get('/admin/categories/{category}/delete', [CategoryController::class, 'destroy'])->name('admin.categories.destroy');
+
+Route::get('/admin/products', [ProductController::class, 'index'])->name('admin.products.index');
+Route::get('/admin/products/create', [ProductController::class, 'create'])->name('admin.products.create');
 
 /* Fim */
 

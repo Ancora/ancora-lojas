@@ -32,13 +32,6 @@ class CategoryController extends Controller
         $data = $request->validated();
         $data['slug'] = Str::slug($data['name']);
 
-        /* Imagem */
-        if (!empty($data['image']) && $data['image']->isValid()) {
-            $file = $data['image'];
-            $path = $file->store('public');
-            $data['image'] = $path;
-        }
-
         Category::create($data);
 
         return Redirect::route('admin.categories.create')->with('success', 'Categoria criada com sucesso!');
@@ -58,5 +51,13 @@ class CategoryController extends Controller
         $category->update($data);
 
         return Redirect::route('admin.categories.index')->with('success', 'Categoria alterada com sucesso!');
+    }
+
+    /* Exclusão */
+    public function destroy(Category $category)
+    {
+        $category->delete();
+
+        return Redirect::route('admin.categories.index')->with('success', 'Categoria excluída com sucesso!');
     }
 }

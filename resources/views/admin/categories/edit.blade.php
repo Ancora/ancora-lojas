@@ -3,9 +3,7 @@
 @section('content')
     <!-- component -->
     <div class="mt-10 w-screen">
-        {{-- <div class="w-1/2 mx-auto bg-gradient-to-b from-blue-800 to-blue-600 h-80 rounded-lg"></div> --}}
         <div class="w-3/4 md:w-4/6 p-40 mx-auto bg-gradient-to-b from-blue-800 to-blue-600 h-80 rounded-t-3xl"></div>
-        {{-- <div class="w-1/2 mx-auto px-6 sm:px-6 lg:px-8 mb-12"> --}}
         <div class="w-3/4 md:w-3/5 mx-auto">
             <div class="bg-gray-900 w-full shadow rounded-b-3xl p-8 sm:p-12 -mt-72 border-2 border-blue-800">
                 <p class="text-3xl font-bold leading-7 text-center text-white">Editar Categoria</p>
@@ -13,29 +11,27 @@
                 <form action="{{ route('admin.categories.update', $category->id) }}" method="post"
                     enctype="multipart/form-data">
                     @csrf
-                    <div class="md:flex items-center mt-8">
-                        <div class="w-full flex flex-col">
-                            <label class="font-semibold leading-none text-gray-300">Nome</label>
-                            <input type="text" id="name" name="name" value="{{ old('name', $category->name) }}"
-                                class="leading-none text-gray-50 p-3 focus:outline-none focus:border-blue-700 mt-4 border-0 bg-gray-800 rounded" />
-                            @error('name')
-                                <span class="text-red-600">
-                                    {{ $message }}
-                                </span>
-                            @enderror
-                        </div>
+                    {{-- Nome --}}
+                    <div class="w-full flex flex-col mt-8">
+                        <label class="font-semibold leading-none text-gray-300">Nome</label>
+                        <input type="text" id="name" name="name" value="{{ old('name', $category->name) }}"
+                            class="leading-none text-gray-50 p-3 focus:outline-none focus:border-blue-700 mt-4 border-0 bg-gray-800 rounded" />
+                        @error('name')
+                            <span class="text-red-600">
+                                {{ $message }}
+                            </span>
+                        @enderror
                     </div>
-                    <div>
-                        <div class="w-full flex flex-col mt-8">
-                            <label class="font-semibold leading-none text-gray-300">Descrição</label>
-                            <textarea type="text" id="description" name="description"
-                                class="h-20 text-base leading-none text-gray-50 p-3 focus:outline-none focus:border-blue-700 mt-4 bg-gray-800 border-0 rounded">{{ old('description', $category->description) }}</textarea>
-                            @error('description')
-                                <span class="text-red-600">
-                                    {{ $message }}
-                                </span>
-                            @enderror
-                        </div>
+                    {{-- Descrição --}}
+                    <div class="w-full flex flex-col mt-8">
+                        <label class="font-semibold leading-none text-gray-300">Descrição</label>
+                        <textarea type="text" id="description" name="description"
+                            class="h-20 text-base leading-none text-gray-50 p-3 focus:outline-none focus:border-blue-700 mt-4 bg-gray-800 border-0 rounded">{{ old('description', $category->description) }}</textarea>
+                        @error('description')
+                            <span class="text-red-600">
+                                {{ $message }}
+                            </span>
+                        @enderror
                     </div>
                     <div class="flex w-full">
                         <div class="flex items-center justify-start w-1/2">
@@ -50,9 +46,6 @@
                                 Alterar
                             </button>
                         </div>
-                    </div>
-                    <div class="text-center mt-4 bg-transparent">
-                        @include('common.alerts')
                     </div>
                 </form>
             </div>

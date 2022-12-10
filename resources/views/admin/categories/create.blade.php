@@ -3,9 +3,7 @@
 @section('content')
     <!-- component -->
     <div class="mt-10 w-screen">
-        {{-- <div class="w-1/2 mx-auto bg-gradient-to-b from-blue-800 to-blue-600 h-80 rounded-lg"></div> --}}
         <div class="w-3/4 md:w-4/6 p-40 mx-auto bg-gradient-to-b from-blue-800 to-blue-600 h-80 rounded-t-3xl"></div>
-        {{-- <div class="w-1/2 mx-auto px-6 sm:px-6 lg:px-8 mb-12"> --}}
         <div class="w-3/4 md:w-3/5 mx-auto">
             <div class="bg-gray-900 w-full shadow rounded-b-3xl p-8 sm:p-12 -mt-72 border-2 border-blue-800">
                 <p class="text-3xl font-bold leading-7 text-center text-white">Cadastrar Categoria</p>
@@ -13,7 +11,6 @@
                 <form action="{{ route('admin.categories.store') }}" method="post" enctype="multipart/form-data">
                     @csrf
                     {{-- Nome --}}
-                    {{-- <div class="md:flex items-center mt-8"> --}}
                     <div class="w-full flex flex-col mt-8">
                         <label class="font-semibold leading-none text-gray-300">Nome</label>
                         <input type="text" name="name" value="{{ old('name') }}"
@@ -24,8 +21,6 @@
                             </span>
                         @enderror
                     </div>
-                    {{-- </div> --}}
-                    {{-- <div> --}}
                     {{-- Descrição --}}
                     <div class="w-full flex flex-col mt-8">
                         <label class="font-semibold leading-none text-gray-300">Descrição</label>
@@ -37,20 +32,17 @@
                             </span>
                         @enderror
                     </div>
-                    {{-- </div>
-                    <div> --}}
                     {{-- Imagem --}}
-                    <div class="w-full flex flex-col mt-8">
+                    {{-- <div class="w-full flex flex-col mt-8">
                         <label class="font-semibold leading-none text-gray-300 mb-4">Imagem</label>
-                        <input type="file" id="image" name="image" value="{{ old('imagem') }}"
+                        <input type="file" name="image"
                             class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                         @error('image')
                             <span class="text-red-600">
                                 {{ $message }}
                             </span>
                         @enderror
-                    </div>
-                    {{-- </div> --}}
+                    </div> --}}
                     <div class="flex w-full">
                         <div class="flex items-center justify-start w-1/2">
                             <button

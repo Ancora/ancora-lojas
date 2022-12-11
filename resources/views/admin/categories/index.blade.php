@@ -7,18 +7,18 @@
 
         <!-- Tabela de Categorias -->
         <div class="mt-2 w-screen">
-            <div class="w-3/4 md:w-4/6 mx-auto">
+            <div class="w-11/12 mx-auto">
                 <button type="submit"
                     class="py-1 px-2 mb-2 bg-green-500 hover:bg-green-700 text-white font-bold border border-green-500 rounded">
                     <a href="{{ route('admin.categories.create') }}">Cadastrar Categoria</a>
                 </button>
             </div>
-            <div class="w-3/4 px-40 md:w-4/6 mx-auto bg-gradient-to-b from-blue-800 to-blue-600 h-80 rounded-t-3xl">
+            <div class="w-11/12 px-40 mx-auto bg-gradient-to-b from-blue-800 to-blue-600 h-80 rounded-t-3xl">
                 <div class="text-center mt-4 bg-transparent">
                     @include('common.alerts')
                 </div>
             </div>
-            <div class="w-3/4 md:w-3/5 mx-auto">
+            <div class="w-10/12 mx-auto">
                 <div class="bg-gray-900 w-full shadow rounded-b-3xl p-8 sm:p-12 -mt-72 border-2 border-blue-800">
                     <table class="bg-gray-900 w-full border-2 border-blue-800">
                         <thead class="block md:table-header-group">

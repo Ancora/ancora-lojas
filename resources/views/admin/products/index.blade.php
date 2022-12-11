@@ -4,18 +4,18 @@
     <div class="mx-10 mt-20">
         <!-- Tabela de Produtos -->
         <div class="mt-2 w-full">
-            <div class="w-11/12 md:w-11/12 mx-auto">
+            <div class="w-11/12 mx-auto">
                 <button type="submit"
                     class="py-1 px-2 mb-2 bg-green-500 hover:bg-green-700 text-white font-bold border border-green-500 rounded">
                     <a href="{{ route('admin.products.create') }}">Cadastrar Produto</a>
                 </button>
             </div>
-            <div class="w-11/12 px-40 md:w-11/12 mx-auto bg-gradient-to-b from-blue-800 to-blue-600 h-80 rounded-t-3xl">
+            <div class="w-11/12 px-40 mx-auto bg-gradient-to-b from-blue-800 to-blue-600 h-80 rounded-t-3xl">
                 <div class="text-center mt-4 bg-transparent">
                     @include('common.alerts')
                 </div>
             </div>
-            <div class="w-9/12 md:w-9/12 mx-4">
+            <div class="w-10/12 mx-auto">
                 <div class="bg-gray-900 w-full shadow rounded-b-3xl p-4 sm:p-4 -mt-72 border-2 border-blue-800">
                     <table class="bg-gray-900 w-full border-2 border-blue-800">
                         <thead class="block md:table-header-group">
@@ -66,6 +66,9 @@
                                 </tr>
                             @endforeach
                         </tbody>
+                        <span>
+                            {{ $products->links() }}
+                        </span>
                     </table>
                 </div>
             </div>

@@ -3,8 +3,8 @@
 @section('content')
     <!-- component -->
     <div class="mt-10 w-screen">
-        <div class="w-3/4 md:w-4/6 p-40 mx-auto bg-gradient-to-b from-blue-800 to-blue-600 h-80 rounded-t-3xl"></div>
-        <div class="w-3/4 md:w-3/5 mx-auto">
+        <div class="w-11/12 p-40 mx-auto bg-gradient-to-b from-blue-800 to-blue-600 h-80 rounded-t-3xl"></div>
+        <div class="w-10/12 mx-auto">
             <div class="bg-gray-900 w-full shadow rounded-b-3xl p-8 sm:p-12 -mt-72 border-2 border-blue-800">
                 <p class="text-3xl font-bold leading-7 text-center text-white">Cadastrar Categoria</p>
                 {{-- Form --}}

@@ -22,7 +22,6 @@ class ProductFactory extends Factory
         $name = $this->faker->sentence(3);
         return [
             'shop_id' => Shop::factory(),
-            'order_id' => Order::factory(),
             'code' => fake()->word(6),
             'name' => $name,
             'description' => fake()->paragraph(3),

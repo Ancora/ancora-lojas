@@ -82,7 +82,7 @@
                         {{-- Comprimento --}}
                         <div class="w-1/4 mr-2 flex flex-col">
                             <label class="font-semibold leading-none text-gray-300">Comprimento</label>
-                            <input id="length" name="length" value="{{ old('length') }}"
+                            <input id="length" name="length" value="{{ old('length', $product->length) }}"
                                 class="leading-none text-gray-50 p-3 focus:outline-none focus:border-blue-700 mt-4 border-0 bg-gray-800 rounded" />
                             @error('length', $product->length)
                                 <span class="text-red-600">

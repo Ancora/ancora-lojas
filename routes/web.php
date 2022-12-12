@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\ShopController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -35,6 +36,12 @@ Route::get('/admin/products/{product}/edit', [ProductController::class, 'edit'])
 Route::post('/admin/products/{product}', [ProductController::class, 'update'])->name('admin.products.update');
 Route::get('/admin/products/{product}/delete', [ProductController::class, 'destroy'])->name('admin.products.destroy');
 
+Route::get('/admin/shops', [ShopController::class, 'index'])->name('admin.shops.index');
+Route::get('/admin/shops/create', [ShopController::class, 'create'])->name('admin.shops.create');
+Route::post('/admin/shops/store', [ShopController::class, 'store'])->name('admin.shops.store');
+Route::get('/admin/shops/{shop}/edit', [ShopController::class, 'edit'])->name('admin.shops.edit');
+Route::post('/admin/shops/{shop}', [ShopController::class, 'update'])->name('admin.shops.update');
+Route::get('/admin/shops/{shop}/delete', [ShopController::class, 'destroy'])->name('admin.shops.destroy');
 /* Fim */
 
 Route::get('/dashboard', function () {

@@ -16,7 +16,6 @@ return new class extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->unsignedInteger('shop_id');
-            $table->unsignedInteger('order_id');
 
             $table->string('code');
             $table->string('name');
@@ -30,7 +29,6 @@ return new class extends Migration
 
             $table->timestamps();
             $table->foreign('shop_id')->references('id')->on('shops')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('order_id')->references('id')->on('orders')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

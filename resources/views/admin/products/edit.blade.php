@@ -6,15 +6,15 @@
         <div class="w-11/12 p-40 mx-auto bg-gradient-to-b from-blue-800 to-blue-600 h-80 rounded-t-3xl"></div>
         <div class="w-10/12 mx-auto">
             <div class="bg-gray-900 w-full shadow rounded-b-3xl p-8 sm:p-12 -mt-72 border-2 border-blue-800">
-                <p class="text-3xl font-bold leading-7 text-center text-white">Cadastrar Produto</p>
+                <p class="text-3xl font-bold leading-7 text-center text-white">Editar Produto</p>
                 {{-- Form --}}
-                <form action="{{ route('admin.products.store') }}" method="post" enctype="multipart/form-data">
+                <form action="{{ route('admin.products.update', $product->id) }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="w-full flex flex-col md:flex-row mt-8">
                         {{-- Nome --}}
                         <div class="w-full md:w-3/4 mr-2 flex flex-col">
                             <label class="font-semibold leading-none text-gray-300">Nome</label>
-                            <input type="text" name="name" value="{{ old('name') }}"
+                            <input type="text" id="name" name="name" value="{{ old('name', $product->name) }}"
                                 class="leading-none text-gray-50 p-3 focus:outline-none focus:border-blue-700 mt-4 border-0 bg-gray-800 rounded" />
                             @error('name')
                                 <span class="text-red-600">
@@ -25,7 +25,7 @@
                         {{-- Preço --}}
                         <div class="w-full mt-8 md:mt-0 md:w-1/4 flex flex-col">
                             <label class="font-semibold leading-none text-gray-300">Preço</label>
-                            <input name="price" value="{{ old('price') }}"
+                            <input id="price" name="price" value="{{ old('price', $product->price) }}"
                                 class="leading-none text-gray-50 p-3 focus:outline-none focus:border-blue-700 mt-4 border-0 bg-gray-800 rounded" />
                             @error('price')
                                 <span class="text-red-600">
@@ -37,8 +37,8 @@
                     {{-- Descrição --}}
                     <div class="w-full flex flex-col mt-8">
                         <label class="font-semibold leading-none text-gray-300">Descrição</label>
-                        <textarea type="text" name="description"
-                            class="h-20 text-base leading-none text-gray-50 p-3 focus:outline-none focus:border-blue-700 mt-4 bg-gray-800 border-0 rounded">{{ old('description') }}</textarea>
+                        <textarea type="text" id="description" name="description"
+                            class="h-20 text-base leading-none text-gray-50 p-3 focus:outline-none focus:border-blue-700 mt-4 bg-gray-800 border-0 rounded">{{ old('description', $product->description) }}</textarea>
                         @error('description')
                             <span class="text-red-600">
                                 {{ $message }}
@@ -49,7 +49,7 @@
                         {{-- Estoque --}}
                         <div class="w-1/4 mr-2 flex flex-col">
                             <label class="font-semibold leading-none text-gray-300">Estoque</label>
-                            <input type="text" name="stock" value="{{ old('stock') }}"
+                            <input type="text" id="stock" name="stock" value="{{ old('stock', $product->stock) }}"
                                 class="leading-none text-gray-50 p-3 focus:outline-none focus:border-blue-700 mt-4 border-0 bg-gray-800 rounded" />
                             @error('stock')
                                 <span class="text-red-600">
@@ -60,7 +60,7 @@
                         {{-- Largura --}}
                         <div class="w-1/4 mr-2 flex flex-col">
                             <label class="font-semibold leading-none text-gray-300">Largura</label>
-                            <input name="width" value="{{ old('width') }}"
+                            <input id="width" name="width" value="{{ old('width', $product->width) }}"
                                 class="leading-none text-gray-50 p-3 focus:outline-none focus:border-blue-700 mt-4 border-0 bg-gray-800 rounded" />
                             @error('width')
                                 <span class="text-red-600">
@@ -71,7 +71,7 @@
                         {{-- Altura --}}
                         <div class="w-1/4 mr-2 flex flex-col">
                             <label class="font-semibold leading-none text-gray-300">Altura</label>
-                            <input name="height" value="{{ old('height') }}"
+                            <input id="height" name="height" value="{{ old('height', $product->height) }}"
                                 class="leading-none text-gray-50 p-3 focus:outline-none focus:border-blue-700 mt-4 border-0 bg-gray-800 rounded" />
                             @error('height')
                                 <span class="text-red-600">
@@ -82,9 +82,9 @@
                         {{-- Comprimento --}}
                         <div class="w-1/4 mr-2 flex flex-col">
                             <label class="font-semibold leading-none text-gray-300">Comprimento</label>
-                            <input name="length" value="{{ old('length') }}"
+                            <input id="length" name="length" value="{{ old('length') }}"
                                 class="leading-none text-gray-50 p-3 focus:outline-none focus:border-blue-700 mt-4 border-0 bg-gray-800 rounded" />
-                            @error('length')
+                            @error('length', $product->length)
                                 <span class="text-red-600">
                                     {{ $message }}
                                 </span>
@@ -112,7 +112,7 @@
                         <div class="flex items-center justify-end w-1/2">
                             <button type="submit"
                                 class="flex justify-end py-1 px-2 mb-2 mt-4 bg-green-500 hover:bg-green-700 text-white font-bold border border-green-500 rounded focus:ring-2 focus:ring-offset-2 focus:ring-blue-700 focus:outline-none">
-                                Cadastrar
+                                Alterar
                             </button>
                         </div>
                     </div>

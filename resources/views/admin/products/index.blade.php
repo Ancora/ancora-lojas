@@ -51,13 +51,13 @@
                                         <span class="flex sm:justify-evenly">
                                             <button type="submit"
                                                 class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 border border-blue-500 rounded">
-                                                <a href="#">
+                                                <a href="{{ route('admin.products.edit', ['product' => $product->id]) }}">
                                                     Editar
                                                 </a>
                                             </button>
                                             <button
                                                 class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 border border-red-500 rounded">
-                                                <a href="#">
+                                                <a href="{{ route('admin.products.destroy', $product->id) }}">
                                                     Excluir
                                                 </a>
                                             </button>

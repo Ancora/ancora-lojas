@@ -3,7 +3,7 @@
 @section('content')
     <div class="mx-10 mt-20">
         <!-- Tabela de Lojas -->
-        <div class="mt-2 w-full">
+        <div class="w-full">
             <div class="w-11/12 mx-auto">
                 <button type="submit"
                     class="py-1 px-2 mb-2 bg-green-500 hover:bg-green-700 text-white font-bold border border-green-500 rounded">
@@ -21,6 +21,8 @@
                         <thead class="block md:table-header-group">
                             <tr
                                 class="border border-grey-500 md:border-none block md:table-row absolute -top-full md:top-auto -left-full md:left-auto  md:relative ">
+                                <th class="bg-gray-600 px-3 py-2 text-white font-bold text-center block md:table-cell">
+                                    ID</th>
                                 <th class="bg-gray-600 px-20 py-2 text-white font-bold text-center block md:table-cell">
                                     Loja</th>
                                 {{-- <th class="bg-gray-600 px-20 py-2 text-white font-bold text-center block md:table-cell">
@@ -34,8 +36,12 @@
                         <tbody class="block md:table-row-group">
                             @foreach ($shops as $shop)
                                 <tr class="bg-transparent even:bg-gray-500 md:border-none block md:table-row">
+                                    <td class="p-2 px-3 text-center text-gray-100 block md:table-cell"><span
+                                            class="flex justify-start  w-1/3 md:hidden font-bold">ID:
+                                        </span>{{ $shop->id }}
+                                    </td>
                                     <td class="p-2 text-left text-gray-100 block md:table-cell"><span
-                                            class="flex justify-start  w-1/3 md:hidden font-bold">Nome:
+                                            class="flex justify-start  w-1/3 md:hidden font-bold">Loja:
                                         </span>{{ $shop->name }}
                                     </td>
                                     {{-- <td class="p-2 text-left text-gray-100 block md:table-cell">

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ShopRequest;
 use App\Models\Shop;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Str;
@@ -22,17 +23,23 @@ class ShopController extends Controller
     /* Cadastro */
     public function create()
     {
-        return view('admin.shops.create');
+        $users = User::all(['id', 'name']);
+
+        return view('admin.shops.create', compact('users'));
     }
 
-    public function store(ShopRequest $request)
+    public function store(Request $request)
     {
-        $data = $request->validated();
+        $data = $request->all();
         $data['slug'] = Str::slug($data['name']);
 
-        Shop::create($data);
+        /* Temporário */
+        $user = User::find($data['user']);
+        $shop = $user->shops()->create($data);
 
-        return dd($data);
+        /* Shop::create($data); */
+
+        return $shop;
     }
 
     /* Edição */

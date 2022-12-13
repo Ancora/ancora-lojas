@@ -28,9 +28,9 @@ class ShopController extends Controller
         return view('admin.shops.create', compact('users'));
     }
 
-    public function store(Request $request)
+    public function store(ShopRequest $request)
     {
-        $data = $request->all();
+        $data = $request->validated();
         $data['slug'] = Str::slug($data['name']);
 
         /* Temporário */

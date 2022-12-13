@@ -50,7 +50,7 @@ Route::prefix('admin')->namespace('Admin')->group(function () {
         Route::get('/create', [ShopController::class, 'create'])->name('admin.shops.create');
         Route::post('/store', [ShopController::class, 'store'])->name('admin.shops.store');
         Route::get('/{shop}/edit', [ShopController::class, 'edit'])->name('admin.shops.edit');
-        Route::post('/{shop}', [ShopController::class, 'update'])->name('admin.shops.update');
+        Route::post('/update/{shop}', [ShopController::class, 'update'])->name('admin.shops.update');
         Route::get('/{shop}/delete', [ShopController::class, 'destroy'])->name('admin.shops.destroy');
     });
 });

@@ -22,26 +22,39 @@ Route::get('/', function () {
     return view('home');
 });
 /* Admin */
-Route::get('/admin/categories', [CategoryController::class, 'index'])->name('admin.categories.index');
-Route::get('/admin/categories/create', [CategoryController::class, 'create'])->name('admin.categories.create');
-Route::post('/admin/categories/store', [CategoryController::class, 'store'])->name('admin.categories.store');
-Route::get('/admin/categories/{category}/edit', [CategoryController::class, 'edit'])->name('admin.categories.edit');
-Route::post('/admin/categories/{category}', [CategoryController::class, 'update'])->name('admin.categories.update');
-Route::get('/admin/categories/{category}/delete', [CategoryController::class, 'destroy'])->name('admin.categories.destroy');
 
-Route::get('/admin/products', [ProductController::class, 'index'])->name('admin.products.index');
-Route::get('/admin/products/create', [ProductController::class, 'create'])->name('admin.products.create');
-Route::post('/admin/products/store', [ProductController::class, 'store'])->name('admin.products.store');
-Route::get('/admin/products/{product}/edit', [ProductController::class, 'edit'])->name('admin.products.edit');
-Route::post('/admin/products/{product}', [ProductController::class, 'update'])->name('admin.products.update');
-Route::get('/admin/products/{product}/delete', [ProductController::class, 'destroy'])->name('admin.products.destroy');
+Route::prefix('admin')->namespace('Admin')->group(function () {
+    /* Categories */
+    Route::prefix('categories')->group(function () {
+        Route::get('/', [CategoryController::class, 'index'])->name('admin.categories.index');
+        Route::get('/create', [CategoryController::class, 'create'])->name('admin.categories.create');
+        Route::post('/store', [CategoryController::class, 'store'])->name('admin.categories.store');
+        Route::get('/{category}/edit', [CategoryController::class, 'edit'])->name('admin.categories.edit');
+        Route::post('/{category}', [CategoryController::class, 'update'])->name('admin.categories.update');
+        Route::get('/{category}/delete', [CategoryController::class, 'destroy'])->name('admin.categories.destroy');
+    });
 
-Route::get('/admin/shops', [ShopController::class, 'index'])->name('admin.shops.index');
-Route::get('/admin/shops/create', [ShopController::class, 'create'])->name('admin.shops.create');
-Route::post('/admin/shops/store', [ShopController::class, 'store'])->name('admin.shops.store');
-Route::get('/admin/shops/{shop}/edit', [ShopController::class, 'edit'])->name('admin.shops.edit');
-Route::post('/admin/shops/{shop}', [ShopController::class, 'update'])->name('admin.shops.update');
-Route::get('/admin/shops/{shop}/delete', [ShopController::class, 'destroy'])->name('admin.shops.destroy');
+    /* Products */
+    Route::prefix('products')->group(function () {
+        Route::get('/', [ProductController::class, 'index'])->name('admin.products.index');
+        Route::get('/create', [ProductController::class, 'create'])->name('admin.products.create');
+        Route::post('/store', [ProductController::class, 'store'])->name('admin.products.store');
+        Route::get('/{product}/edit', [ProductController::class, 'edit'])->name('admin.products.edit');
+        Route::post('/{product}', [ProductController::class, 'update'])->name('admin.products.update');
+        Route::get('/{product}/delete', [ProductController::class, 'destroy'])->name('admin.products.destroy');
+    });
+
+    /* Shops */
+    Route::prefix('shops')->group(function () {
+        Route::get('/', [ShopController::class, 'index'])->name('admin.shops.index');
+        Route::get('/create', [ShopController::class, 'create'])->name('admin.shops.create');
+        Route::post('/store', [ShopController::class, 'store'])->name('admin.shops.store');
+        Route::get('/{shop}/edit', [ShopController::class, 'edit'])->name('admin.shops.edit');
+        Route::post('/{shop}', [ShopController::class, 'update'])->name('admin.shops.update');
+        Route::get('/{shop}/delete', [ShopController::class, 'destroy'])->name('admin.shops.destroy');
+    });
+});
+
 /* Fim */
 
 Route::get('/dashboard', function () {

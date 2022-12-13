@@ -23,35 +23,35 @@ Route::get('/', function () {
 });
 /* Admin */
 
-Route::prefix('admin')->namespace('Admin')->group(function () {
+Route::prefix('admin')->name('admin.')->namespace('Admin')->group(function () {
     /* Categories */
-    Route::prefix('categories')->group(function () {
-        Route::get('/', [CategoryController::class, 'index'])->name('admin.categories.index');
-        Route::get('/create', [CategoryController::class, 'create'])->name('admin.categories.create');
-        Route::post('/store', [CategoryController::class, 'store'])->name('admin.categories.store');
-        Route::get('/{category}/edit', [CategoryController::class, 'edit'])->name('admin.categories.edit');
-        Route::post('/{category}', [CategoryController::class, 'update'])->name('admin.categories.update');
-        Route::get('/{category}/delete', [CategoryController::class, 'destroy'])->name('admin.categories.destroy');
+    Route::prefix('categories')->name('categories.')->group(function () {
+        Route::get('/', [CategoryController::class, 'index'])->name('index');
+        Route::get('/create', [CategoryController::class, 'create'])->name('create');
+        Route::post('/store', [CategoryController::class, 'store'])->name('store');
+        Route::get('/{category}/edit', [CategoryController::class, 'edit'])->name('edit');
+        Route::post('/{category}', [CategoryController::class, 'update'])->name('update');
+        Route::get('/{category}/delete', [CategoryController::class, 'destroy'])->name('destroy');
     });
 
     /* Products */
-    Route::prefix('products')->group(function () {
-        Route::get('/', [ProductController::class, 'index'])->name('admin.products.index');
-        Route::get('/create', [ProductController::class, 'create'])->name('admin.products.create');
-        Route::post('/store', [ProductController::class, 'store'])->name('admin.products.store');
-        Route::get('/{product}/edit', [ProductController::class, 'edit'])->name('admin.products.edit');
-        Route::post('/{product}', [ProductController::class, 'update'])->name('admin.products.update');
-        Route::get('/{product}/delete', [ProductController::class, 'destroy'])->name('admin.products.destroy');
+    Route::prefix('products')->name('products.')->group(function () {
+        Route::get('/', [ProductController::class, 'index'])->name('index');
+        Route::get('/create', [ProductController::class, 'create'])->name('create');
+        Route::post('/store', [ProductController::class, 'store'])->name('store');
+        Route::get('/{product}/edit', [ProductController::class, 'edit'])->name('edit');
+        Route::post('/{product}', [ProductController::class, 'update'])->name('update');
+        Route::get('/{product}/delete', [ProductController::class, 'destroy'])->name('destroy');
     });
 
     /* Shops */
-    Route::prefix('shops')->group(function () {
-        Route::get('/', [ShopController::class, 'index'])->name('admin.shops.index');
-        Route::get('/create', [ShopController::class, 'create'])->name('admin.shops.create');
-        Route::post('/store', [ShopController::class, 'store'])->name('admin.shops.store');
-        Route::get('/{shop}/edit', [ShopController::class, 'edit'])->name('admin.shops.edit');
-        Route::post('/update/{shop}', [ShopController::class, 'update'])->name('admin.shops.update');
-        Route::get('/{shop}/delete', [ShopController::class, 'destroy'])->name('admin.shops.destroy');
+    Route::prefix('shops')->name('shops.')->group(function () {
+        Route::get('/', [ShopController::class, 'index'])->name('index');
+        Route::get('/create', [ShopController::class, 'create'])->name('create');
+        Route::post('/store', [ShopController::class, 'store'])->name('store');
+        Route::get('/{shop}/edit', [ShopController::class, 'edit'])->name('edit');
+        Route::post('/update/{shop}', [ShopController::class, 'update'])->name('update');
+        Route::get('/{shop}/delete', [ShopController::class, 'destroy'])->name('destroy');
     });
 });
 

@@ -30,7 +30,8 @@ class ShopController extends Controller
 
     public function store(ShopRequest $request)
     {
-        $data = $request->validated();
+        $data = $request->all();
+        /* $data = $request->validated(); */
         $data['slug'] = Str::slug($data['name']);
 
         /* Temporário */
@@ -39,7 +40,7 @@ class ShopController extends Controller
 
         /* Shop::create($data); */
 
-        return $shop;
+        return Redirect::route('admin.shops.create')->with('success', 'Loja cadastrada com sucesso!');
     }
 
     /* Edição */

@@ -2,10 +2,10 @@
 
 @section('content')
     <!-- component -->
-    <div class="mt-10 w-screen">
-        <div class="w-11/12 p-40 mx-auto bg-gradient-to-b from-blue-800 to-blue-600 h-80 rounded-t-3xl"></div>
+    <div class="w-screen">
+        <div class="w-11/12 mx-auto bg-gradient-to-b from-blue-800 to-blue-600 h-80 rounded-t-3xl"></div>
         <div class="w-10/12 mx-auto">
-            <div class="bg-gray-900 w-full shadow rounded-b-3xl p-8 sm:p-12 -mt-72 border-2 border-blue-800">
+            <div class="bg-gray-900 w-full shadow rounded-b-3xl p-4 md:p-10 -mt-72 border-2 border-blue-800">
                 <p class="text-3xl font-bold leading-7 text-center text-white">Cadastrar Produto</p>
                 {{-- Form --}}
                 <form action="{{ route('admin.products.store') }}" method="post" enctype="multipart/form-data">
@@ -80,7 +80,7 @@
                             @enderror
                         </div>
                         {{-- Comprimento --}}
-                        <div class="w-1/4 mr-2 flex flex-col">
+                        <div class="w-1/4 flex flex-col">
                             <label class="font-semibold leading-none text-gray-300">Comprimento</label>
                             <input name="length" value="{{ old('length') }}"
                                 class="leading-none text-gray-50 p-3 focus:outline-none focus:border-blue-700 mt-4 border-0 bg-gray-800 rounded" />

@@ -16,7 +16,7 @@
                 </div>
             </div>
             <div class="w-10/12 mx-auto">
-                <div class="bg-gray-900 w-full shadow rounded-b-3xl p-4 md:p-20 -mt-72 border-2 border-blue-800">
+                <div class="bg-gray-900 w-full shadow rounded-b-3xl p-4 -mt-72 border-2 border-blue-800">
                     <table class="bg-gray-900 w-full border-2 border-blue-800">
                         <thead class="block md:table-header-group">
                             <tr

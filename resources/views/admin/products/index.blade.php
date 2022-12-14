@@ -3,7 +3,7 @@
 @section('content')
     <div class="mx-10 mt-20">
         <!-- Tabela de Produtos -->
-        <div class="mt-2 w-full">
+        <div class="w-full">
             <div class="w-11/12 mx-auto">
                 <button type="submit"
                     class="py-1 px-2 mb-2 bg-green-500 hover:bg-green-700 text-white font-bold border border-green-500 rounded">
@@ -16,7 +16,7 @@
                 </div>
             </div>
             <div class="w-10/12 mx-auto">
-                <div class="bg-gray-900 w-full shadow rounded-b-3xl p-4 sm:p-4 -mt-72 border-2 border-blue-800">
+                <div class="bg-gray-900 w-full shadow rounded-b-3xl p-4 -mt-72 border-2 border-blue-800">
                     <table class="bg-gray-900 w-full border-2 border-blue-800">
                         <thead class="block md:table-header-group">
                             <tr

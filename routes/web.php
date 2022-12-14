@@ -35,14 +35,15 @@ Route::prefix('admin')->name('admin.')->namespace('Admin')->group(function () {
     });
 
     /* Products */
-    Route::prefix('products')->name('products.')->group(function () {
+    /* Route::prefix('products')->name('products.')->group(function () {
         Route::get('/', [ProductController::class, 'index'])->name('index');
         Route::get('/create', [ProductController::class, 'create'])->name('create');
         Route::post('/store', [ProductController::class, 'store'])->name('store');
         Route::get('/{product}/edit', [ProductController::class, 'edit'])->name('edit');
         Route::post('/{product}', [ProductController::class, 'update'])->name('update');
         Route::get('/{product}/delete', [ProductController::class, 'destroy'])->name('destroy');
-    });
+    }); */
+    Route::resource('products', 'ProductController');
 
     /* Shops */
     Route::prefix('shops')->name('shops.')->group(function () {

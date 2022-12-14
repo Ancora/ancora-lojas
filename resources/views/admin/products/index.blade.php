@@ -23,8 +23,8 @@
                                 class="border border-grey-500 md:border-none block md:table-row absolute -top-full md:top-auto -left-full md:left-auto  md:relative ">
                                 <th class="bg-gray-600 px-20 py-2 text-white font-bold text-center block md:table-cell">
                                     Produto</th>
-                                {{-- <th class="bg-gray-600 px-20 py-2 text-white font-bold text-center block md:table-cell">
-                                </th> --}}
+                                <th class="bg-gray-600 px-20 py-2 text-white font-bold text-center block md:table-cell">
+                                    Preço</th>
                                 <th class="bg-gray-600 p-2 text-white font-bold text-center block md:table-cell">
                                     Descrição</th>
                                 <th class="bg-gray-600 px-20 py-2 text-white font-bold text-center block md:table-cell">
@@ -38,10 +38,10 @@
                                             class="flex justify-start  w-1/3 md:hidden font-bold">Nome:
                                         </span>{{ $product->name }}
                                     </td>
-                                    {{-- <td class="p-2 text-left text-gray-100 block md:table-cell">
-                                        <img id="inputImage" src="/public/images/{{ $category->image }}" alt=""
-                                            width="100" height="100">
-                                    </td> --}}
+                                    <td class="p-2 text-left text-gray-100 block md:table-cell"><span
+                                            class="flex justify-start w-1/3 md:hidden font-bold">Preço:
+                                        </span>{{ $product->price }}
+                                    </td>
                                     <td class="p-2 text-left text-gray-100 block md:table-cell"><span
                                             class="flex justify-start w-1/3 md:hidden font-bold">Descrição:
                                         </span>{{ $product->description }}

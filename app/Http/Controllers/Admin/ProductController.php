@@ -3,66 +3,98 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\ProductRequest;
 use App\Models\Product;
-use Illuminate\Console\View\Components\Alert;
+use App\Models\Shop;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Str;
 
 class ProductController extends Controller
 {
-    /* Lista */
+    private $product;
+
+    public function __construct(Product $product)
+    {
+        $this->product = $product;
+    }
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
-        $products = Product::paginate(10);
+        $products = $this->product->paginate(10);
 
         return view('admin.products.index', compact('products'));
     }
 
-    /* Cadastro */
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function create()
     {
-        return view('admin.products.create');
-    }
-
-    public function store(ProductRequest $request)
-    {
-        $data = $request->validated();
-        $data['slug'] = Str::slug($data['name']);
-
         /* Temporário */
-        $data['code'] = "abcdef";
-        $data['shop_id'] = "1";
-        $data['order_id'] = "1";
-        dd($data);
+        $shops = Shop::all(['id', 'name']);
 
-        Product::create($data);
-
-        return Redirect::route('admin.products.create')->with('success', 'Produto criado com sucesso!');
+        return view('admin.products.create', compact('shops'));
     }
 
-    /* Edição */
-    public function edit(Product $product)
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
     {
+        //
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        $product = $this->product->find($id);
+
         return view('admin.products.edit', compact('product'));
     }
 
-    public function update(Product $product, ProductRequest $request)
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
     {
-        $data = $request->validated();
-        $data['slug'] = Str::slug($data['name']);
-
-        $product->update($data);
-
-        return Redirect::route('admin.products.index')->with('success', 'Produto alterado com sucesso!');
+        //
     }
 
-    /* Exclusão */
-    public function destroy(Product $product)
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
     {
-        $product->delete();
-
-        return Redirect::route('admin.products.index')->with('success', 'Produto excluído com sucesso!');
+        //
     }
 }

@@ -24,6 +24,7 @@ class ProductRequest extends FormRequest
     public function rules()
     {
         return [
+            'shop_id' => 'required',
             'code' => 'required',
             'name' => 'required',
             'description' => 'required|min:30',

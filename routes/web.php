@@ -23,7 +23,7 @@ Route::get('/', function () {
 });
 /* Admin */
 
-Route::prefix('admin')->name('admin.')->namespace('Admin')->group(function () {
+Route::prefix('admin')->name('admin.')->group(function () {
     /* Categories */
     Route::prefix('categories')->name('categories.')->group(function () {
         Route::get('/', [CategoryController::class, 'index'])->name('index');
@@ -43,7 +43,8 @@ Route::prefix('admin')->name('admin.')->namespace('Admin')->group(function () {
         Route::post('/{product}', [ProductController::class, 'update'])->name('update');
         Route::get('/{product}/delete', [ProductController::class, 'destroy'])->name('destroy');
     }); */
-    Route::resource('products', 'ProductController');
+
+    Route::resource('products', ProductController::class);
 
     /* Shops */
     Route::prefix('shops')->name('shops.')->group(function () {

@@ -10,7 +10,7 @@
                 {{-- Form --}}
                 <form action="{{ route('admin.products.store') }}" method="post" enctype="multipart/form-data">
                     @csrf
-                    <div class="w-full flex flex-col md:flex-row mt-8">
+                    <div class="w-full flex flex-col md:flex-row mt-4">
                         {{-- Nome --}}
                         <div class="w-full md:w-3/4 mr-2 flex flex-col">
                             <label class="font-semibold leading-none text-gray-300">Nome</label>
@@ -23,7 +23,7 @@
                             @enderror
                         </div>
                         {{-- Preço --}}
-                        <div class="w-full mt-8 md:mt-0 md:w-1/4 flex flex-col">
+                        <div class="w-full mt-4 md:mt-0 md:w-1/4 flex flex-col">
                             <label class="font-semibold leading-none text-gray-300">Preço</label>
                             <input name="price" value="{{ old('price') }}"
                                 class="leading-none text-gray-50 p-3 focus:outline-none focus:border-blue-700 mt-4 border-0 bg-gray-800 rounded" />
@@ -35,7 +35,7 @@
                         </div>
                     </div>
                     {{-- Descrição --}}
-                    <div class="w-full flex flex-col mt-8">
+                    <div class="w-full flex flex-col mt-4">
                         <label class="font-semibold leading-none text-gray-300">Descrição</label>
                         <textarea type="text" name="description"
                             class="h-20 text-base leading-none text-gray-50 p-3 focus:outline-none focus:border-blue-700 mt-4 bg-gray-800 border-0 rounded">{{ old('description') }}</textarea>
@@ -45,7 +45,7 @@
                             </span>
                         @enderror
                     </div>
-                    <div class="w-full flex flex-row mt-8">
+                    <div class="w-full flex flex-row mt-4">
                         {{-- Estoque --}}
                         <div class="w-1/4 mr-2 flex flex-col">
                             <label class="font-semibold leading-none text-gray-300">Estoque</label>
@@ -91,17 +91,25 @@
                             @enderror
                         </div>
                     </div>
-                    {{-- Imagem --}}
-                    {{-- <div class="w-full flex flex-col mt-8">
-                        <label class="font-semibold leading-none text-gray-300 mb-4">Imagem</label>
-                        <input type="file" name="image"
-                            class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
-                        @error('image')
+                    {{-- Lojas --}}
+                    <div class="w-full flex flex-col mt-4 mx-auto">
+                        <label class="font-semibold leading-none text-gray-300 ">Loja</label>
+                        <div class=" w-2/4 flex flex-row mt-4 items-center justify-between text-gray-300">
+                            @foreach ($shops as $shop)
+                                <div>
+                                    <input type="radio" name="shop" id="{{ $shop->name }}"
+                                        value="{{ $shop->id }}" class="form-radio">
+                                    <label for="{{ $shop->id }}">{{ $shop->name }}</label>
+                                </div>
+                            @endforeach
+                        </div>
+                        @error('description')
                             <span class="text-red-600">
                                 {{ $message }}
                             </span>
                         @enderror
-                    </div> --}}
+                    </div>
+                    {{-- Botões --}}
                     <div class="flex w-full">
                         <div class="flex items-center justify-start w-1/2">
                             <button

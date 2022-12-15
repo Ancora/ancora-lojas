@@ -10,6 +10,7 @@
                 {{-- Form --}}
                 <form action="{{ route('admin.products.update', $product->id) }}" method="post" enctype="multipart/form-data">
                     @csrf
+                    @method('PUT')
                     <div class="w-full flex flex-col md:flex-row mt-4">
                         {{-- Nome --}}
                         <div class="w-full md:w-3/4 mr-2 flex flex-col">
@@ -98,13 +99,13 @@
                             @foreach ($shops as $shop)
                                 <div>
                                     @if ($product->shop_id == $shop->id)
-                                        <input type="radio" name="shop" id="{{ $shop->name }}"
+                                        <input type="radio" name="shop_id" id="{{ $shop->name }}"
                                             value="{{ $shop->id }}" class="form-radio" checked>
                                     @else
-                                        <input type="radio" name="shop" id="{{ $shop->name }}"
+                                        <input type="radio" name="shop_id" id="{{ $shop->name }}"
                                             value="{{ $shop->id }}" class="form-radio">
                                     @endif
-                                    <label for="{{ $shop->id }}">{{ $shop->name }}</label>
+                                    <label>{{ $shop->name }}</label>
                                 </div>
                             @endforeach
                         </div>

@@ -24,9 +24,9 @@ class ProductRequest extends FormRequest
     public function rules()
     {
         return [
-            'shop_id' => 'required',
-            'code' => 'required',
-            'name' => 'required',
+            'shop_id' => 'string',
+            'code' => 'string',
+            'name' => 'required|',
             'description' => 'required|min:30',
             'price' => 'required',
             'stock' => 'required',
@@ -34,6 +34,13 @@ class ProductRequest extends FormRequest
             'height' => 'required',
             'length' => 'required',
             /* 'photos.*' => 'image', */
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'distinct' => 'já existe produto com este nome',
         ];
     }
 }

@@ -94,16 +94,16 @@
                     {{-- Lojas --}}
                     <div class="w-full flex flex-col mt-4 mx-auto">
                         <label class="font-semibold leading-none text-gray-300 ">Loja</label>
-                        <div class=" w-2/4 flex flex-row mt-4 items-center justify-between text-gray-300">
+                        <div class=" w-2/4 flex flex-row mt-4 justify-between text-gray-300">
                             @foreach ($shops as $shop)
-                                <div>
-                                    <input type="radio" name="shop" id="{{ $shop->name }}"
-                                        value="{{ $shop->id }}" class="form-radio">
-                                    <label for="{{ $shop->id }}">{{ $shop->name }}</label>
+                                <div class="flex items-center">
+                                    <input type="radio" name="shop_id" id="shop_id" value="{{ $shop->id }}"
+                                        class="form-radio mr-2">
+                                    <span>{{ $shop->name }}</span>
                                 </div>
                             @endforeach
                         </div>
-                        @error('description')
+                        @error('shop_id')
                             <span class="text-red-600">
                                 {{ $message }}
                             </span>

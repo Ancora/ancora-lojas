@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedInteger('shop_id');
 
-            $table->string('code');
+            $table->integer('code');
             $table->string('name')->unique();
             $table->text('description');
             $table->decimal('price', 10, 2);

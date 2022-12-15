@@ -192,6 +192,7 @@ return [
         'width'     => 'largura',
         'height'    => 'altura',
         'length'    => 'comprimento',
+        'shop_id'   => 'loja',
         'zipcode'   => 'cep',
         'company_name'   => 'razão social',
         'neighborhood' => 'bairro',

@@ -3,9 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ProductRequest;
 use App\Models\Product;
 use App\Models\Shop;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Str;
 
 class ProductController extends Controller
 {
@@ -48,7 +51,22 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        $shop = Shop::find($data['shop_id']);
+        $data['slug'] = Str::slug($data['name']);
+
+        if (Product::exists()) {
+            $last_product = $this->product->latest()->first();
+            $next = $last_product['id'] + 1;
+        } else {
+            $next = 1;
+        }
+
+        $data['code'] = (str_pad($data['shop_id'], 2, '0', STR_PAD_LEFT) . str_pad($next, 6, '0', STR_PAD_LEFT));
+
+        $shop->products()->create($data);
+
+        return Redirect::route('admin.products.create')->with('success', 'Produto cadastrado com sucesso!');
     }
 
     /**
@@ -68,7 +86,7 @@ class ProductController extends Controller
      * @param  int  $product
      * @return \Illuminate\Http\Response
      */
-    public function edit($product, Shop $shops)
+    public function edit($product)
     {
         $product = $this->product->findOrFail($product);
         /* Temporário */
@@ -86,7 +104,13 @@ class ProductController extends Controller
      */
     public function update(Request $request, $product)
     {
-        //
+        $data = $request->all();
+        $shop = Shop::find($data['shop_id']);
+
+        $product = $this->product->find($product);
+        $product->update($data);
+
+        return Redirect::route('admin.products.index')->with('success', 'Produto alterado com sucesso!');
     }
 
     /**

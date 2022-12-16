@@ -9,6 +9,9 @@ use App\Models\Shop;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\ValidatedInput;
+use PhpParser\Node\Stmt\Foreach_;
 
 class ProductController extends Controller
 {
@@ -49,19 +52,22 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProductRequest $request)
     {
-        $data = $request->all();
+        $data = $request->validated();
         $shop = Shop::find($data['shop_id']);
         $data['slug'] = Str::slug($data['name']);
 
         if (Product::exists()) {
             $last_product = $this->product->latest()->first();
             $next = $last_product['id'] + 1;
+            /* $major_shop = $this->product->max('code');
+            $next = $major_shop + 1; */
         } else {
             $next = 1;
         }
 
+        /* $data['code'] = (str_pad($next, 6, '0', STR_PAD_LEFT)); */
         $data['code'] = (str_pad($data['shop_id'], 2, '0', STR_PAD_LEFT) . str_pad($next, 6, '0', STR_PAD_LEFT));
 
         $shop->products()->create($data);
@@ -102,10 +108,12 @@ class ProductController extends Controller
      * @param  int  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $product)
+    public function update(ProductRequest $request, $product)
     {
-        $data = $request->all();
-        $shop = Shop::find($data['shop_id']);
+        $data = $request->validated();
+        //$shop = Shop::find($data['shop_id']);
+
+        $data['slug'] = Str::slug($data['name']);
 
         $product = $this->product->find($product);
         $product->update($data);
@@ -121,6 +129,9 @@ class ProductController extends Controller
      */
     public function destroy($product)
     {
-        return $product;
+        $product = $this->product->find($product);
+        $product->delete();
+
+        return Redirect::route('admin.products.index')->with('success', 'Produto excluído com sucesso!');
     }
 }

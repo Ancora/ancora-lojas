@@ -17,17 +17,22 @@
                             <label class="font-semibold leading-none text-gray-300">Nome</label>
                             <input type="text" name="name" value="{{ old('name', $product->name) }}"
                                 class="leading-none text-gray-50 p-3 focus:outline-none focus:border-blue-700 mt-4 border-0 bg-gray-800 rounded" />
-                            @error('name')
-                                <span class="text-red-600">
-                                    {{ $message }}
-                                </span>
-                            @enderror
+                            @if (old('name') != $product->name)
+                                @error('name')
+                                    <span class="text-red-600">
+                                        {{ $message }}
+                                    </span>
+                                @enderror
+                            @endif
                         </div>
                         {{-- Preço --}}
                         <div class="w-full mt-4 md:mt-0 md:w-1/4 flex flex-col">
                             <label class="font-semibold leading-none text-gray-300">Preço</label>
                             <input name="price" value="{{ old('price', $product->price) }}"
-                                class="leading-none text-gray-50 p-3 focus:outline-none focus:border-blue-700 mt-4 border-0 bg-gray-800 rounded" />
+                                class="leading-none text-gray-50 p-3 focus:outline-none focus:border-blue-700 mt-4 border-0 bg-gray-800 rounded"
+                                @error('price')
+                                is-invalid
+                                @enderror />
                             @error('price')
                                 <span class="text-red-600">
                                     {{ $message }}
@@ -93,27 +98,26 @@
                         </div>
                     </div>
                     {{-- Lojas --}}
-                    <div class="w-full flex flex-col mt-4 mx-auto">
+                    <div class="w-1/4 flex flex-col mt-4">
                         <label class="font-semibold leading-none text-gray-300 ">Loja</label>
-                        <div class=" w-2/4 flex flex-row mt-4 items-center justify-between text-gray-300">
-                            @foreach ($shops as $shop)
-                                <div>
-                                    @if ($product->shop_id == $shop->id)
-                                        <input type="radio" name="shop_id" id="{{ $shop->name }}"
-                                            value="{{ $shop->id }}" class="form-radio" checked>
-                                    @else
-                                        <input type="radio" name="shop_id" id="{{ $shop->name }}"
-                                            value="{{ $shop->id }}" class="form-radio">
-                                    @endif
-                                    <label>{{ $shop->name }}</label>
+                        @foreach ($shops as $shop)
+                            @if ($product->shop_id == $shop->id)
+                                <div
+                                    class="leading-none text-gray-50 p-3 focus:outline-none focus:border-blue-700 mt-4 border-0 bg-gray-800 rounded"">
+                                    <input type="radio" name="shop_id" id="{{ $shop->name }}"
+                                        value="{{ $shop->id }}" class="form-radio mr-2" checked
+                                        @disabled(true)>
+                                    <label>
+                                        {{ $shop->name }}
+                                    </label>
                                 </div>
-                            @endforeach
-                        </div>
-                        @error('description')
+                            @endif
+                        @endforeach
+                        {{-- @error('shop_id')
                             <span class="text-red-600">
                                 {{ $message }}
                             </span>
-                        @enderror
+                        @enderror --}}
                     </div>
                     {{-- Botões --}}
                     <div class="flex w-full">

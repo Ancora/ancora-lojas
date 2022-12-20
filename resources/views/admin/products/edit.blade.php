@@ -10,29 +10,28 @@
                 {{-- Form --}}
                 <form action="{{ route('admin.products.update', $product->id) }}" method="post" enctype="multipart/form-data">
                     @csrf
-                    @method('PUT')
                     <div class="w-full flex flex-col md:flex-row mt-4">
                         {{-- Nome --}}
                         <div class="w-full md:w-3/4 mr-2 flex flex-col">
                             <label class="font-semibold leading-none text-gray-300">Nome</label>
                             <input type="text" name="name" value="{{ old('name', $product->name) }}"
                                 class="leading-none text-gray-50 p-3 focus:outline-none focus:border-blue-700 mt-4 border-0 bg-gray-800 rounded" />
-                            @if (old('name') != $product->name)
-                                @error('name')
-                                    <span class="text-red-600">
-                                        {{ $message }}
-                                    </span>
-                                @enderror
-                            @endif
+                            {{-- @if (old('name') != $product->name) --}}
+                            @error('name')
+                                <span class="text-red-600">
+                                    {{ $message }}
+                                </span>
+                            @enderror
+                            {{-- @endif --}}
                         </div>
                         {{-- Preço --}}
                         <div class="w-full mt-4 md:mt-0 md:w-1/4 flex flex-col">
                             <label class="font-semibold leading-none text-gray-300">Preço</label>
                             <input name="price" value="{{ old('price', $product->price) }}"
                                 class="leading-none text-gray-50 p-3 focus:outline-none focus:border-blue-700 mt-4 border-0 bg-gray-800 rounded"
-                                @error('price')
+                                {{-- @error('price')
                                 is-invalid
-                                @enderror />
+                                @enderror --}} />
                             @error('price')
                                 <span class="text-red-600">
                                     {{ $message }}
@@ -104,8 +103,8 @@
                             @if ($product->shop_id == $shop->id)
                                 <div
                                     class="leading-none text-gray-50 p-3 focus:outline-none focus:border-blue-700 mt-4 border-0 bg-gray-800 rounded"">
-                                    <input type="radio" name="shop_id" id="{{ $shop->name }}"
-                                        value="{{ $shop->id }}" class="form-radio mr-2" checked
+                                    <input type="radio" name="shop_id" id="{{ $shop->id }}"
+                                        value="{{ $product->shop_id }}" class="form-radio mr-2" checked
                                         @disabled(true)>
                                     <label>
                                         {{ $shop->name }}
@@ -133,9 +132,6 @@
                                 Alterar
                             </button>
                         </div>
-                    </div>
-                    <div class="text-center mt-4 bg-transparent">
-                        @include('common.alerts')
                     </div>
                 </form>
             </div>

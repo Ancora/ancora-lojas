@@ -67,15 +67,18 @@
                                                     Editar
                                                 </a>
                                             </button>
-                                            <form action="{{ route('admin.products.destroy', $product->id) }}"
+                                            {{-- <form action="{{ route('admin.products.destroy', $product->id) }}"
                                                 method="POST">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit"
                                                     class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 border border-red-500 rounded">Excluir
                                                 </button>
-                                            </form>
-
+                                            </form> --}}
+                                            <button type="submit"
+                                                class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 border border-red-500 rounded">
+                                                <a href="{{ route('admin.products.destroy', $product->id) }}">Excluir</a>
+                                            </button>
                                         </span>
                                     </td>
                                 </tr>

@@ -28,7 +28,8 @@ class ProductRequest extends FormRequest
         return [
             'shop_id' => 'int|required',
             'code' => 'enum',
-            'name' => 'required|unique:products',
+            'name' => 'required',
+            /* 'name' => 'required|unique:products', */
             /* 'name' => ['required', Rule::unique('products')->ignore('product')], */
             /* 'name' => 'required|unique:products,name,' . $product->id . ', id', */
             'description' => 'required|min:10',

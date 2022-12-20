@@ -16,13 +16,11 @@
                         <label class="font-semibold leading-none text-gray-300">Nome</label>
                         <input type="text" id="name" name="name" value="{{ old('name', $category->name) }}"
                             class="leading-none text-gray-50 p-3 focus:outline-none focus:border-blue-700 mt-4 border-0 bg-gray-800 rounded" />
-                        {{-- @if (old('name') != $category->name) --}}
                         @error('name')
                             <span class="text-red-600">
                                 {{ $message }}
                             </span>
                         @enderror
-                        {{-- @else --}}
                     </div>
                     {{-- Descrição --}}
                     <div class="w-full flex flex-col mt-8">

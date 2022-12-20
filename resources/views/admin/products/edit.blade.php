@@ -16,13 +16,11 @@
                             <label class="font-semibold leading-none text-gray-300">Nome</label>
                             <input type="text" name="name" value="{{ old('name', $product->name) }}"
                                 class="leading-none text-gray-50 p-3 focus:outline-none focus:border-blue-700 mt-4 border-0 bg-gray-800 rounded" />
-                            {{-- @if (old('name') != $product->name) --}}
                             @error('name')
                                 <span class="text-red-600">
                                     {{ $message }}
                                 </span>
                             @enderror
-                            {{-- @endif --}}
                         </div>
                         {{-- Preço --}}
                         <div class="w-full mt-4 md:mt-0 md:w-1/4 flex flex-col">

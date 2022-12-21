@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedInteger('shop_id');
 
-            $table->integer('code');
+            $table->string('code');
             $table->string('name');
             $table->boolean('status')->default(true);
             $table->text('description');

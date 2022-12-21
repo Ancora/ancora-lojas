@@ -45,8 +45,6 @@ Route::prefix('admin')->name('admin.')->namespace('Admin')->group(function () {
         Route::get('/{product}/delete', [ProductController::class, 'destroy'])->name('destroy');
     });
 
-    //Route::resource('products', ProductController::class);
-
     /* Shops */
     Route::prefix('shops')->name('shops.')->group(function () {
         Route::get('/', [ShopController::class, 'index'])->name('index');

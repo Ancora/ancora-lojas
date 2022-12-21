@@ -9,9 +9,7 @@ use App\Models\Shop;
 use Illuminate\Console\View\Components\Alert;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
-use Illuminate\Validation\Rule;
 
 class ProductController extends Controller
 {
@@ -64,34 +62,7 @@ class ProductController extends Controller
 
     public function update(ProductRequest $request, Product $product)
     {
-        /* $data = $request->validated(
-            [
-                'name' => [
-                    'required',
-                    Rule::unique('products', 'name')->ignore($product->id),
-                ],
-            ]
-        ); */
-        /* $this->validate($request, [
-            'name' => [
-                'required',
-                Rule::unique('products')->ignore($product->id),
-            ],
-        ]); */
-        /* Validator::make($request, [
-            'name' => [
-                'required',
-                Rule::unique('products')->ignore($request->id),
-            ],
-        ]); */
-        /* $data = $request->validate([
-            'name' => [
-                'required',
-                Rule::unique('products', 'name')->ignore($product->id),
-            ]
-        ]); */
         $data = $request->validated();
-        //$shop = Shop::find($data['shop_id']);
         $data['slug'] = Str::slug($data['name']);
 
         $product->update($data);

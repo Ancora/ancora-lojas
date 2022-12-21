@@ -2,9 +2,7 @@
 
 namespace App\Http\Requests;
 
-use App\Models\Product;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 
 class ProductRequest extends FormRequest
 {
@@ -30,8 +28,6 @@ class ProductRequest extends FormRequest
             'code' => 'enum',
             'name' => 'required',
             /* 'name' => 'required|unique:products', */
-            /* 'name' => ['required', Rule::unique('products')->ignore('product')], */
-            /* 'name' => 'required|unique:products,name,' . $product->id . ', id', */
             'description' => 'required|min:10',
             'price' => 'required',
             'stock' => 'required',

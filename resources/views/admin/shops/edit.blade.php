@@ -10,16 +10,39 @@
                 {{-- Form --}}
                 <form action="{{ route('admin.shops.update', $shop->id) }}" method="post" enctype="multipart/form-data">
                     @csrf
-                    {{-- Nome --}}
-                    <div class="w-full flex flex-col mt-8">
-                        <label class="font-semibold leading-none text-gray-300">Nome</label>
-                        <input type="text" id="name" name="name" value="{{ old('name', $shop->name) }}"
-                            class="leading-none text-gray-50 p-3 focus:outline-none focus:border-blue-700 mt-4 border-0 bg-gray-800 rounded" />
-                        @error('name')
-                            <span class="text-red-600">
-                                {{ $message }}
-                            </span>
-                        @enderror
+                    <div class="w-full flex flex-col md:flex-row mt-4">
+                        {{-- Nome --}}
+                        <div class="w-full md:w-3/4 mr-2 flex flex-col">
+                            <label class="font-semibold leading-none text-gray-300">Nome</label>
+                            <input type="text" id="name" name="name" value="{{ old('name', $shop->name) }}"
+                                class="leading-none text-gray-50 p-3 focus:outline-none focus:border-blue-700 mt-4 border-0 bg-gray-800 rounded" />
+                            @error('name')
+                                <span class="text-red-600">
+                                    {{ $message }}
+                                </span>
+                            @enderror
+                        </div>
+                        {{-- Status --}}
+                        <div class="w-full md:w-1/4 flex flex-col mr-2 mx-auto">
+                            <label class="font-semibold leading-none text-gray-300 ">Situação</label>
+                            <div class="flex flex-row mt-4 justify-evenly text-gray-300">
+                                <label>
+                                    <input type="radio" name="status" value="1"
+                                        {{ $shop->status == 1 ? 'checked' : '' }}>
+                                    Ativa
+                                </label>
+                                <label>
+                                    <input type="radio" name="status" value="0"
+                                        {{ $shop->status == 0 ? 'checked' : '' }}>
+                                    Inativa
+                                </label>
+                            </div>
+                            @error('status')
+                                <span class="text-red-600">
+                                    {{ $message }}
+                                </span>
+                            @enderror
+                        </div>
                     </div>
                     {{-- Descrição --}}
                     <div class="w-full flex flex-col mt-8">
@@ -32,17 +55,6 @@
                             </span>
                         @enderror
                     </div>
-                    {{-- Imagem --}}
-                    {{-- <div class="w-full flex flex-col mt-8">
-                        <label class="font-semibold leading-none text-gray-300 mb-4">Imagem</label>
-                        <input type="file" name="image"
-                            class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
-                        @error('image')
-                            <span class="text-red-600">
-                                {{ $message }}
-                            </span>
-                        @enderror
-                    </div> --}}
                     <div class="flex w-full">
                         <div class="flex items-center justify-start w-1/2">
                             <button

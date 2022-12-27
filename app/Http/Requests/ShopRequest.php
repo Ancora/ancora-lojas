@@ -25,6 +25,7 @@ class ShopRequest extends FormRequest
     {
         return [
             'name' => 'required',
+            'status' => 'boolean|required',
             'description' => 'required',
         ];
     }

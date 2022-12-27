@@ -22,6 +22,22 @@
                                 </span>
                             @enderror
                         </div>
+                        {{-- Status --}}
+                        <div class="w-full md:w-1/4 flex flex-col mr-2 mx-auto">
+                            <label class="font-semibold leading-none text-gray-300 ">Situação</label>
+                            <div class="flex flex-row mt-4 justify-evenly text-gray-300">
+                                <div class="flex items-center">
+                                    <input type="radio" name="status" id="ativo" value="Ativo"
+                                        class="form-radio mr-2" checked>
+                                    <label for="ativo">Ativo</label>
+                                </div>
+                                <div class="flex items-center">
+                                    <input type="radio" name="status" id="inativo" value="Inativo"
+                                        class="form-radio mr-2">
+                                    <label for="inativo">Inativo</label>
+                                </div>
+                            </div>
+                        </div>
                         {{-- Preço --}}
                         <div class="w-full mt-4 md:mt-0 md:w-1/4 flex flex-col">
                             <label class="font-semibold leading-none text-gray-300">Preço</label>

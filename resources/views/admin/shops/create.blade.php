@@ -17,16 +17,32 @@
                             @endforeach
                         </select>
                     </div>
-                    <div class="w-full flex flex-col mt-8">
+                    <div class="w-full flex flex-col md:flex-row mt-4">
                         {{-- Nome --}}
-                        <label class="font-semibold leading-none text-gray-300">Nome</label>
-                        <input type="text" name="name" value="{{ old('name') }}"
-                            class="leading-none text-gray-50 p-3 focus:outline-none focus:border-blue-700 mt-4 border-0 bg-gray-800 rounded" />
-                        @error('name')
-                            <span class="text-red-600">
-                                {{ $message }}
-                            </span>
-                        @enderror
+                        <div class="w-full md:w-3/4 mr-2 flex flex-col">
+                            <label class="font-semibold leading-none text-gray-300">Nome</label>
+                            <input type="text" name="name" value="{{ old('name') }}"
+                                class="leading-none text-gray-50 p-3 focus:outline-none focus:border-blue-700 mt-4 border-0 bg-gray-800 rounded" />
+                            @error('name')
+                                <span class="text-red-600">
+                                    {{ $message }}
+                                </span>
+                            @enderror
+                        </div>
+                        {{-- Status --}}
+                        <div class="w-full md:w-1/4 flex flex-col mr-2 mx-auto">
+                            <label class="font-semibold leading-none text-gray-300 ">Situação</label>
+                            <div class="flex flex-row mt-4 justify-evenly text-gray-300">
+                                <label>
+                                    Ativa
+                                    <input type="radio" name="status" value='1' checked>
+                                </label>
+                                <label>
+                                    Inativa
+                                    <input type="radio" name="status" value='2'>
+                                </label>
+                            </div>
+                        </div>
                     </div>
                     {{-- Descrição --}}
                     <div class="w-full flex flex-col mt-8">

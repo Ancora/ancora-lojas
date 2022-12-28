@@ -30,6 +30,12 @@ class Product extends Model
         return $this->belongsToMany(Category::class);
     }
 
+    /* N products X N colors */
+    public function colors()
+    {
+        return $this->belongsToMany(Color::class);
+    }
+
     /* N products X 1 shop */
     public function shop()
     {

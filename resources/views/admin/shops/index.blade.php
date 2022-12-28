@@ -3,7 +3,7 @@
 @section('content')
     <div class="mx-10">
         <!-- Tabela de Lojas -->
-        <div class="w-full">
+        <div class="w-full mt-20">
             <div class="w-11/12 mx-auto">
                 <button type="submit"
                     class="py-1 px-2 mb-2 bg-green-500 hover:bg-green-700 text-white font-bold border border-green-500 rounded">
@@ -15,16 +15,15 @@
                     @include('common.alerts')
                 </div>
             </div>
-            {{-- {{ dd($shops) }} --}}
             @if (is_null($shops) || $shops->count() == 0)
                 <div class="w-11/12 mx-auto">
-                    <div class="bg-transparent w-full shadow rounded-b-3xl p-4 mt-2 border-2 h-64 border-blue-800">
+                    <div class="bg-gray-900 w-full shadow rounded-b-3xl p-4 -mt-72 border-2 h-64 border-blue-800">
                         <table class="w-full border-2 my-20 border-blue-800">
                             <thead class="block md:table-header-group">
                                 <tr
                                     class="border border-grey-500 md:border-none block md:table-row absolute -top-full md:top-auto -left-full md:left-auto md:relative">
                                     <th class="px-3 py-2 text-white font-bold text-center block md:table-cell">
-                                        Não há Loja cadastrada!</th>
+                                        Nenhuma Loja cadastrada!</th>
                                 </tr>
                             </thead>
                         </table>

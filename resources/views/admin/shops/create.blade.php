@@ -35,11 +35,11 @@
                             <div class="flex flex-row mt-4 justify-evenly text-gray-300">
                                 <label>
                                     Ativa
-                                    <input type="radio" name="status" value='1' checked>
+                                    <input type="radio" name="status" value="1" checked>
                                 </label>
                                 <label>
                                     Inativa
-                                    <input type="radio" name="status" value='2'>
+                                    <input type="radio" name="status" value="0">
                                 </label>
                             </div>
                         </div>
@@ -55,17 +55,6 @@
                             </span>
                         @enderror
                     </div>
-                    {{-- Imagem --}}
-                    {{-- <div class="w-full flex flex-col mt-8">
-                        <label class="font-semibold leading-none text-gray-300 mb-4">Imagem</label>
-                        <input type="file" name="image"
-                            class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
-                        @error('image')
-                            <span class="text-red-600">
-                                {{ $message }}
-                            </span>
-                        @enderror
-                    </div> --}}
                     <div class="flex w-full">
                         <div class="flex items-center justify-start w-1/2">
                             <button

@@ -24,6 +24,7 @@ class ShopRequest extends FormRequest
     public function rules()
     {
         return [
+            'user_id' => 'integer',
             'name' => 'required',
             'status' => 'boolean|required',
             'description' => 'required',

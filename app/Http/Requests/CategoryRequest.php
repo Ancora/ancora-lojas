@@ -26,6 +26,7 @@ class CategoryRequest extends FormRequest
         return [
             /* 'name' => 'required|unique:categories', */
             'name' => 'required',
+            'status' => 'boolean|required',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'description' => 'required|min:10',
         ];

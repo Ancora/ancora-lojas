@@ -187,12 +187,17 @@ return [
         'mobile'    => 'celular',
         'month'     => 'mês',
         'name'      => 'nome',
+        /* Inclusos */
         'price'     => 'preço',
         'stock'     => 'estoque',
         'width'     => 'largura',
         'height'    => 'altura',
         'length'    => 'comprimento',
         'shop_id'   => 'loja',
+        'condition' => 'condição de venda',
+        'component' => 'componente',
+        'maker'     => 'fabricante/fornecedor',
+        /*  */
         'zipcode'   => 'cep',
         'company_name'   => 'razão social',
         'neighborhood' => 'bairro',

@@ -23,4 +23,10 @@ class Color extends Model
     {
         return $this->belongsToMany(Product::class);
     }
+
+    /* N colors X N elements */
+    public function elements()
+    {
+        return $this->belongsToMany(Element::class);
+    }
 }

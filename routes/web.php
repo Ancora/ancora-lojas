@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ColorController;
+use App\Http\Controllers\Admin\ElementController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ShopController;
 use App\Http\Controllers\ProfileController;
@@ -54,6 +55,16 @@ Route::prefix('admin')->name('admin.')->namespace('Admin')->group(function () {
         Route::get('/{color}/edit', [ColorController::class, 'edit'])->name('edit');
         Route::post('/update/{color}', [ColorController::class, 'update'])->name('update');
         Route::get('{color}/delete', [ColorController::class, 'destroy'])->name('destroy');
+    });
+
+    /* Elements */
+    Route::prefix('elements')->name('elements.')->group(function () {
+        Route::get('/', [ElementController::class, 'index'])->name('index');
+        Route::get('/create', [ElementController::class, 'create'])->name('create');
+        Route::post('/store', [ElementController::class, 'store'])->name('store');
+        Route::get('/{element}/edit', [ElementController::class, 'edit'])->name('edit');
+        Route::post('/update/{element}', [ElementController::class, 'update'])->name('update');
+        Route::get('{element}/delete', [ElementController::class, 'destroy'])->name('destroy');
     });
 
     /* Products */

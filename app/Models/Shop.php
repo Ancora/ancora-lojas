@@ -17,7 +17,7 @@ class Shop extends Model
     ];
 
     /* Relacionamentos */
-    /* N shops X 1 user */
+    /* N shops X 1 user ???????????????????*/
     public function user()
     {
         return $this->belongsTo(User::class);

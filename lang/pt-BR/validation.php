@@ -197,6 +197,7 @@ return [
         'condition' => 'condição de venda',
         'component' => 'componente',
         'maker'     => 'fabricante/fornecedor',
+        'factor'    => 'fator',
         /*  */
         'zipcode'   => 'cep',
         'company_name'   => 'razão social',

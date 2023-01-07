@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ColorRequest;
 use App\Models\Color;
+use App\Models\Element;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 
@@ -21,7 +22,9 @@ class ColorController extends Controller
     /* Cadastro */
     public function create()
     {
-        return view('admin.colors.create');
+        $elements = Element::all();
+
+        return view('admin.colors.create', compact('elements'));
     }
 
     public function store(ColorRequest $request)

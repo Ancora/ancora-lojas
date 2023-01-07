@@ -25,35 +25,42 @@
                         {{-- Condição --}}
                         <div class="w-full md:w-3/4 mr-2 flex flex-col">
                             <label class="font-semibold leading-none text-gray-300">Condição de Venda</label>
-                            <input type="text" name="condition" value="{{ old('condition') }}"
-                                class="leading-none text-gray-50 p-3 focus:outline-none focus:border-blue-700 mt-4 border-0 bg-gray-800 rounded" />
-                            @error('condition')
-                                <span class="text-red-600">
-                                    {{ $message }}
-                                </span>
-                            @enderror
+                            <select name="condition"
+                                class="leading-none text-gray-50 p-3.5 focus:outline-none focus:border-blue-700 mt-4 border-0 bg-gray-800 rounded">
+                                <option></option>
+                                @foreach ($elements as $element)
+                                    @if ($element->factor == 'CON')
+                                        <option value="{{ $element->id }}">
+                                            {{ $element->name }}</option>
+                                    @endif
+                                @endforeach
+                            </select>
                         </div>
                         {{-- Componente --}}
                         <div class="w-full md:w-3/4 mr-2 flex flex-col">
                             <label class="font-semibold leading-none text-gray-300">Componente</label>
-                            <input type="text" name="component" value="{{ old('component') }}"
-                                class="leading-none text-gray-50 p-3 focus:outline-none focus:border-blue-700 mt-4 border-0 bg-gray-800 rounded" />
-                            @error('component')
-                                <span class="text-red-600">
-                                    {{ $message }}
-                                </span>
-                            @enderror
+                            <select name="component"
+                                class="leading-none text-gray-50 p-3.5 focus:outline-none focus:border-blue-700 mt-4 border-0 bg-gray-800 rounded">
+                                <option></option>
+                                @foreach ($elements as $element)
+                                    @if ($element->factor == 'COM')
+                                        <option value="{{ $element->id }}">{{ $element->name }}</option>
+                                    @endif
+                                @endforeach
+                            </select>
                         </div>
                         {{-- Fabricante --}}
                         <div class="w-full md:w-3/4 mr-2 flex flex-col">
                             <label class="font-semibold leading-none text-gray-300">Fabricante/Fornecedor</label>
-                            <input type="text" name="maker" value="{{ old('maker') }}"
-                                class="leading-none text-gray-50 p-3 focus:outline-none focus:border-blue-700 mt-4 border-0 bg-gray-800 rounded" />
-                            @error('maker')
-                                <span class="text-red-600">
-                                    {{ $message }}
-                                </span>
-                            @enderror
+                            <select name="maker"
+                                class="leading-none text-gray-50 p-3.5 focus:outline-none focus:border-blue-700 mt-4 border-0 bg-gray-800 rounded">
+                                <option></option>
+                                @foreach ($elements as $element)
+                                    @if ($element->factor == 'MAK')
+                                        <option value="{{ $element->id }}">{{ $element->name }}</option>
+                                    @endif
+                                @endforeach
+                            </select>
                         </div>
                     </div>
                     <div class="flex w-full">

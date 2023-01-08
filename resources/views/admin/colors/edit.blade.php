@@ -25,8 +25,16 @@
                         {{-- Condição --}}
                         <div class="w-full md:w-3/4 mr-2 flex flex-col">
                             <label class="font-semibold leading-none text-gray-300">Condição de Venda</label>
-                            <input type="text" name="condition" value="{{ old('condition', $color->condition) }}"
-                                class="leading-none text-gray-50 p-3 focus:outline-none focus:border-blue-700 mt-4 border-0 bg-gray-800 rounded" />
+                            <select name="condition"
+                                class="leading-none text-gray-50 p-3.5 focus:outline-none focus:border-blue-700 mt-4 border-0 bg-gray-800 rounded">
+                                @foreach ($elements as $element)
+                                    @if ($element->factor == 'CON')
+                                        <option value="{{ $element->name }}"
+                                            {{ $element->name == $color->condition ? 'selected' : '' }}>{{ $element->name }}
+                                        </option>
+                                    @endif
+                                @endforeach
+                            </select>
                             @error('condition')
                                 <span class="text-red-600">
                                     {{ $message }}
@@ -36,8 +44,16 @@
                         {{-- Componente --}}
                         <div class="w-full md:w-3/4 mr-2 flex flex-col">
                             <label class="font-semibold leading-none text-gray-300">Componente</label>
-                            <input type="text" name="component" value="{{ old('component', $color->component) }}"
-                                class="leading-none text-gray-50 p-3 focus:outline-none focus:border-blue-700 mt-4 border-0 bg-gray-800 rounded" />
+                            <select name="component"
+                                class="leading-none text-gray-50 p-3.5 focus:outline-none focus:border-blue-700 mt-4 border-0 bg-gray-800 rounded">
+                                @foreach ($elements as $element)
+                                    @if ($element->factor == 'COM')
+                                        <option value="{{ $element->name }}"
+                                            {{ $element->name == $color->component ? 'selected' : '' }}>{{ $element->name }}
+                                        </option>
+                                    @endif
+                                @endforeach
+                            </select>
                             @error('component')
                                 <span class="text-red-600">
                                     {{ $message }}
@@ -47,8 +63,16 @@
                         {{-- Fabricante --}}
                         <div class="w-full md:w-3/4 mr-2 flex flex-col">
                             <label class="font-semibold leading-none text-gray-300">Fabricante/Fornecedor</label>
-                            <input type="text" name="maker" value="{{ old('maker', $color->maker) }}"
-                                class="leading-none text-gray-50 p-3 focus:outline-none focus:border-blue-700 mt-4 border-0 bg-gray-800 rounded" />
+                            <select name="maker"
+                                class="leading-none text-gray-50 p-3.5 focus:outline-none focus:border-blue-700 mt-4 border-0 bg-gray-800 rounded">
+                                @foreach ($elements as $element)
+                                    @if ($element->factor == 'MAK')
+                                        <option value="{{ $element->name }}"
+                                            {{ $element->name == $color->maker ? 'selected' : '' }}>{{ $element->name }}
+                                        </option>
+                                    @endif
+                                @endforeach
+                            </select>
                             @error('maker')
                                 <span class="text-red-600">
                                     {{ $message }}

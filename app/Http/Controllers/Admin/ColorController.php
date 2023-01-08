@@ -30,8 +30,15 @@ class ColorController extends Controller
     public function store(ColorRequest $request)
     {
         $data = $request->validated();
+        $condition = Element::find($data['condition']);
+        $data['condition'] = $condition->name;
+        $component = Element::find($data['component']);
+        $data['component'] = $component->name;
+        $maker = Element::find($data['maker']);
+        $data['maker'] = $maker->name;
 
         Color::create($data);
+        /* $element->colors()->create($data); */
 
         return Redirect::route('admin.colors.create')->with('success', 'Cor cadastrada com sucesso!');
     }
@@ -39,7 +46,8 @@ class ColorController extends Controller
     /* Edição */
     public function edit(Color $color)
     {
-        return view('admin.colors.edit', compact('color'));
+        $elements = Element::all();
+        return view('admin.colors.edit', compact('color', 'elements'));
     }
 
     public function update(Color $color, ColorRequest $request)

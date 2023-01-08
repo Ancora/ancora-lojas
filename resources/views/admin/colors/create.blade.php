@@ -35,6 +35,11 @@
                                     @endif
                                 @endforeach
                             </select>
+                            @error('condition')
+                                <span class="text-red-600">
+                                    {{ $message }}
+                                </span>
+                            @enderror
                         </div>
                         {{-- Componente --}}
                         <div class="w-full md:w-3/4 mr-2 flex flex-col">
@@ -48,6 +53,11 @@
                                     @endif
                                 @endforeach
                             </select>
+                            @error('component')
+                                <span class="text-red-600">
+                                    {{ $message }}
+                                </span>
+                            @enderror
                         </div>
                         {{-- Fabricante --}}
                         <div class="w-full md:w-3/4 mr-2 flex flex-col">
@@ -61,6 +71,11 @@
                                     @endif
                                 @endforeach
                             </select>
+                            @error('maker')
+                                <span class="text-red-600">
+                                    {{ $message }}
+                                </span>
+                            @enderror
                         </div>
                     </div>
                     <div class="flex w-full">

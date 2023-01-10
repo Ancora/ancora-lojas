@@ -12,15 +12,22 @@
                     @csrf
                     <div class="w-full flex flex-col md:flex-row mt-4">
                         {{-- Nome --}}
-                        <div class="w-full md:w-3/4 mr-2 flex flex-col">
-                            <label class="font-semibold leading-none text-gray-300">Nome</label>
-                            <input type="text" name="name" value="{{ old('name', $product->name) }}"
-                                class="leading-none text-gray-50 p-3 focus:outline-none focus:border-blue-700 mt-4 border-0 bg-gray-800 rounded" />
-                            @error('name')
-                                <span class="text-red-600">
-                                    {{ $message }}
-                                </span>
-                            @enderror
+                        <div class="w-full md:w-3/4 mr-2 flex flex-row">
+                            <div class="w-full md:w-1/6 mr-2 flex flex-col">
+                                <label class="font-semibold leading-none text-blue-300">Código</label>
+                                <label
+                                    class="leading-none text-blue-500 text-lg pt-4 focus:outline-none focus:border-blue-700 mt-4 border-0 rounded">{{ $product->code }}</label>
+                            </div>
+                            <div class="w-full md:w-5/6 mr-2 flex flex-col">
+                                <label class="font-semibold leading-none text-gray-300">Nome</label>
+                                <input type="text" name="name" value="{{ old('name', $product->name) }}"
+                                    class="leading-none text-gray-50 p-3 focus:outline-none focus:border-blue-700 mt-4 border-0 bg-gray-800 rounded" />
+                                @error('name')
+                                    <span class="text-red-600">
+                                        {{ $message }}
+                                    </span>
+                                @enderror
+                            </div>
                         </div>
                         {{-- Preço --}}
                         <div class="w-full mt-4 md:mt-0 md:w-1/4 flex flex-col">
@@ -91,27 +98,44 @@
                             @enderror
                         </div>
                     </div>
-                    {{-- Lojas --}}
-                    <div class="w-1/4 flex flex-col mt-4">
-                        <label class="font-semibold leading-none text-gray-300 ">Loja</label>
-                        @foreach ($shops as $shop)
-                            @if ($product->shop_id == $shop->id)
-                                <div
-                                    class="leading-none text-gray-50 p-3 focus:outline-none focus:border-blue-700 mt-4 border-0 bg-gray-800 rounded"">
-                                    <input type="radio" name="shop_id" id="{{ $shop->id }}"
-                                        value="{{ $product->shop_id }}" class="form-radio mr-2" checked
-                                        @disabled(true)>
-                                    <label>
-                                        {{ $shop->name }}
-                                    </label>
-                                </div>
-                            @endif
-                        @endforeach
-                        {{-- @error('shop_id')
-                            <span class="text-red-600">
-                                {{ $message }}
-                            </span>
-                        @enderror --}}
+                    <div class="w-full flex flex-row mt-4">
+                        {{-- Lojas --}}
+                        <div class="w-1/4 mr-2 flex flex-col">
+                            <label class="font-semibold leading-none text-gray-300 ">Loja</label>
+                            <div
+                                class="leading-none text-gray-50 p-3 focus:outline-none focus:border-blue-700 mt-4 border-0 bg-gray-800 rounded"">
+                                <input type="radio" name="shop_id" value="{{ $product->shop_id }}"
+                                    class="form-radio mr-2" checked @disabled(true)>
+                                <label>
+                                    {{ $shop->name }}
+                                </label>
+                            </div>
+                        </div>
+                        {{-- Categorias --}}
+                        <div class="w-1/4 mr-2 flex flex-col">
+                            <label class="font-semibold leading-none text-gray-300 ">Categorias</label>
+                            <div class="flex flex-col mt-4 justify-between text-gray-300">
+                                @foreach ($categories as $category)
+                                    @if ($category->status == 1)
+                                        <div class="flex items-center">
+                                            <input type="checkbox" name="categories[]" id=""
+                                                value="{{ $category->id }}"
+                                                @if ($product->categories->contains($category)) checked @endif class="form-checkbox mr-2">
+                                            <span>{{ $category->name }}</span>
+                                        </div>
+                                    @endif
+                                @endforeach
+                            </div>
+                            @error('categories')
+                                <span class="text-red-600">
+                                    {{ $message }}
+                                </span>
+                            @enderror
+                        </div>
+                        {{-- Cores --}}
+                        <div class="w-1/4 flex flex-col">
+                            <label class="font-semibold leading-none text-gray-300 ">Cores</label>
+                        </div>
                     </div>
                     {{-- Botões --}}
                     <div class="flex w-full">

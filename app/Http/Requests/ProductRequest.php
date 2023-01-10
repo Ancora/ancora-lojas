@@ -25,6 +25,7 @@ class ProductRequest extends FormRequest
     {
         return [
             'shop_id' => 'string|required',
+            'categories' => 'array|required',
             'code' => 'enum',
             'name' => 'required',
             /* 'name' => 'required|unique:products', */

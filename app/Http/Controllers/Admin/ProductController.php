@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProductRequest;
+use App\Models\Category;
 use App\Models\Product;
 use App\Models\Shop;
 use Illuminate\Console\View\Components\Alert;
@@ -24,10 +25,9 @@ class ProductController extends Controller
     /* Cadastro */
     public function create()
     {
-        /* Temporário */
-        $shops = Shop::all(['id', 'name']);
-
-        return view('admin.products.create', compact('shops'));
+        $shops = Shop::all();
+        $categories = Category::all();
+        return view('admin.products.create', compact('shops', 'categories'));
     }
 
     public function store(ProductRequest $request)
@@ -46,7 +46,8 @@ class ProductController extends Controller
 
         $data['code'] = (str_pad($data['shop_id'], 2, '0', STR_PAD_LEFT) . str_pad($next, 6, '0', STR_PAD_LEFT));
 
-        $shop->products()->create($data);
+        $product = $shop->products()->create($data);
+        $product->categories()->sync($data['categories']);
 
         return Redirect::route('admin.products.create')->with('success', 'Produto cadastrado com sucesso!');
     }
@@ -54,10 +55,9 @@ class ProductController extends Controller
     /* Edição */
     public function edit(Product $product)
     {
-        /* Temporário */
-        $shops = Shop::all(['id', 'name']);
-
-        return view('admin.products.edit', compact('product', 'shops'));
+        $shop = Shop::find($product->shop_id);
+        $categories = Category::all();
+        return view('admin.products.edit', compact('product', 'shop', 'categories'));
     }
 
     public function update(ProductRequest $request, Product $product)
@@ -65,7 +65,9 @@ class ProductController extends Controller
         $data = $request->validated();
         $data['slug'] = Str::slug($data['name']);
 
+        /* $product = Product::find($product); */
         $product->update($data);
+        $product->categories()->sync($data['categories']);
 
         return Redirect::route('admin.products.index')->with('success', 'Produto alterado com sucesso!');
     }

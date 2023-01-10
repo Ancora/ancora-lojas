@@ -198,6 +198,7 @@ return [
         'component' => 'componente',
         'maker'     => 'fabricante/fornecedor',
         'factor'    => 'fator',
+        'categories' => 'categorias',
         /*  */
         'zipcode'   => 'cep',
         'company_name'   => 'razão social',

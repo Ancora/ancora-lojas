@@ -107,23 +107,67 @@
                             @enderror
                         </div>
                     </div>
-                    {{-- Lojas --}}
-                    <div class="w-full flex flex-col mt-4 mx-auto">
-                        <label class="font-semibold leading-none text-gray-300 ">Loja</label>
-                        <div class=" w-2/4 flex flex-row mt-4 justify-between text-gray-300">
-                            @foreach ($shops as $shop)
-                                <div class="flex items-center">
-                                    <input type="radio" name="shop_id" id="shop_id" value="{{ $shop->id }}"
-                                        class="form-radio mr-2">
-                                    <span>{{ $shop->name }}</span>
-                                </div>
-                            @endforeach
+                    <div class="w-full flex flex-row mt-4">
+                        {{-- Lojas --}}
+                        <div class="w-1/4 mr-2 flex flex-col">
+                            <label class="font-semibold leading-none text-gray-300 ">Loja</label>
+                            <div class="flex flex-col mt-4 justify-between text-gray-300">
+                                @foreach ($shops as $shop)
+                                    @if ($shop->status == 1)
+                                        <div class="flex items-center">
+                                            <input type="radio" name="shop_id" id="shop_id" value="{{ $shop->id }}"
+                                                class="form-radio mr-2">
+                                            <span>{{ $shop->name }}</span>
+                                        </div>
+                                    @endif
+                                @endforeach
+                            </div>
+                            @error('shop_id')
+                                <span class="text-red-600">
+                                    {{ $message }}
+                                </span>
+                            @enderror
                         </div>
-                        @error('shop_id')
-                            <span class="text-red-600">
-                                {{ $message }}
-                            </span>
-                        @enderror
+                        {{-- Categorias --}}
+                        <div class="w-1/4 mr-2 flex flex-col">
+                            <label class="font-semibold leading-none text-gray-300 ">Categorias</label>
+                            <div class="flex flex-col mt-4 justify-between text-gray-300">
+                                @foreach ($categories as $category)
+                                    @if ($category->status == 1)
+                                        <div class="flex items-center">
+                                            <input type="checkbox" name="categories[]" id=""
+                                                value="{{ $category->id }}" class="form-checkbox mr-2">
+                                            <span>{{ $category->name }}</span>
+                                        </div>
+                                    @endif
+                                @endforeach
+                            </div>
+                            @error('categories')
+                                <span class="text-red-600">
+                                    {{ $message }}
+                                </span>
+                            @enderror
+                        </div>
+                        {{-- Cores --}}
+                        <div class="w-1/4 flex flex-col">
+                            <label class="font-semibold leading-none text-gray-300 ">Cores</label>
+                            {{-- <div class="flex flex-col mt-4 justify-between text-gray-300">
+                                @foreach ($categories as $category)
+                                    @if ($category->status == 1)
+                                        <div class="flex items-center">
+                                            <input type="checkbox" name="category_id" id="category_id"
+                                                value="{{ $category->id }}" class="form-checkbox mr-2">
+                                            <span>{{ $category->name }}</span>
+                                        </div>
+                                    @endif
+                                @endforeach
+                            </div>
+                            @error('category_id')
+                                <span class="text-red-600">
+                                    {{ $message }}
+                                </span>
+                            @enderror --}}
+                        </div>
                     </div>
                     {{-- Botões --}}
                     <div class="flex w-full">

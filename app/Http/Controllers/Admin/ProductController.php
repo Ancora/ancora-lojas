@@ -51,6 +51,7 @@ class ProductController extends Controller
 
         $product = $shop->products()->create($data);
         $product->categories()->sync($data['categories']);
+        $product->colors()->sync($data['colors']);
 
         return Redirect::route('admin.products.create')->with('success', 'Produto cadastrado com sucesso!');
     }
@@ -60,7 +61,8 @@ class ProductController extends Controller
     {
         $shop = Shop::find($product->shop_id);
         $categories = Category::all();
-        return view('admin.products.edit', compact('product', 'shop', 'categories'));
+        $colors = Color::all();
+        return view('admin.products.edit', compact('product', 'shop', 'categories', 'colors'));
     }
 
     public function update(ProductRequest $request, Product $product)
@@ -71,6 +73,7 @@ class ProductController extends Controller
         /* $product = Product::find($product); */
         $product->update($data);
         $product->categories()->sync($data['categories']);
+        $product->colors()->sync($data['colors']);
 
         return Redirect::route('admin.products.index')->with('success', 'Produto alterado com sucesso!');
     }

@@ -154,14 +154,15 @@
                             <div class="flex flex-col mt-4 justify-between text-gray-300">
                                 @foreach ($colors as $color)
                                     <div class="flex items-center">
-                                        <input type="checkbox" name="color_id" id="color_id" value="{{ $color->id }}"
+                                        <input type="checkbox" name="colors[]" id="" value="{{ $color->id }}"
                                             class="form-checkbox mr-2">
-                                        <span>{{ $color->name }} - {{ $color->condition }} -
-                                            {{ $color->component }}</span>
+                                        <span>{{ $color->name }}
+                                            ({{ $color->condition }}/{{ $color->component }})
+                                        </span>
                                     </div>
                                 @endforeach
                             </div>
-                            @error('color_id')
+                            @error('colors')
                                 <span class="text-red-600">
                                     {{ $message }}
                                 </span>

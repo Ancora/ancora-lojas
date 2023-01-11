@@ -133,8 +133,24 @@
                             @enderror
                         </div>
                         {{-- Cores --}}
-                        <div class="w-1/4 flex flex-col">
+                        <div class="w-2/4 flex flex-col">
                             <label class="font-semibold leading-none text-gray-300 ">Cores</label>
+                            <div class="flex flex-col mt-4 justify-between text-gray-300">
+                                @foreach ($colors as $color)
+                                    <div class="flex items-center">
+                                        <input type="checkbox" name="colors[]" id="" value="{{ $color->id }}"
+                                            @if ($product->colors->contains($color)) checked @endif class="form-checkbox mr-2">
+                                        <span>{{ $color->name }}
+                                            ({{ $color->condition }}/{{ $color->component }})
+                                        </span>
+                                    </div>
+                                @endforeach
+                            </div>
+                            @error('colors')
+                                <span class="text-red-600">
+                                    {{ $message }}
+                                </span>
+                            @enderror
                         </div>
                     </div>
                     {{-- Botões --}}

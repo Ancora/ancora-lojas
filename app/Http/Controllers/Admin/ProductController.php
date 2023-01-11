@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\CategoryRequest;
 use App\Http\Requests\ProductRequest;
 use App\Models\Category;
+use App\Models\Color;
 use App\Models\Product;
 use App\Models\Shop;
 use Illuminate\Console\View\Components\Alert;
@@ -28,7 +29,8 @@ class ProductController extends Controller
     {
         $shops = Shop::all();
         $categories = Category::all();
-        return view('admin.products.create', compact('shops', 'categories'));
+        $colors = Color::all();
+        return view('admin.products.create', compact('shops', 'categories', 'colors'));
     }
 
     public function store(ProductRequest $request)

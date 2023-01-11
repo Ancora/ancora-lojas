@@ -199,6 +199,7 @@ return [
         'maker'     => 'fabricante/fornecedor',
         'factor'    => 'fator',
         'categories' => 'categorias',
+        'colors'    => 'cores',
         /*  */
         'zipcode'   => 'cep',
         'company_name'   => 'razão social',

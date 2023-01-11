@@ -149,24 +149,23 @@
                             @enderror
                         </div>
                         {{-- Cores --}}
-                        <div class="w-1/4 flex flex-col">
+                        <div class="w-2/4 flex flex-col">
                             <label class="font-semibold leading-none text-gray-300 ">Cores</label>
-                            {{-- <div class="flex flex-col mt-4 justify-between text-gray-300">
-                                @foreach ($categories as $category)
-                                    @if ($category->status == 1)
-                                        <div class="flex items-center">
-                                            <input type="checkbox" name="category_id" id="category_id"
-                                                value="{{ $category->id }}" class="form-checkbox mr-2">
-                                            <span>{{ $category->name }}</span>
-                                        </div>
-                                    @endif
+                            <div class="flex flex-col mt-4 justify-between text-gray-300">
+                                @foreach ($colors as $color)
+                                    <div class="flex items-center">
+                                        <input type="checkbox" name="color_id" id="color_id" value="{{ $color->id }}"
+                                            class="form-checkbox mr-2">
+                                        <span>{{ $color->name }} - {{ $color->condition }} -
+                                            {{ $color->component }}</span>
+                                    </div>
                                 @endforeach
                             </div>
-                            @error('category_id')
+                            @error('color_id')
                                 <span class="text-red-600">
                                     {{ $message }}
                                 </span>
-                            @enderror --}}
+                            @enderror
                         </div>
                     </div>
                     {{-- Botões --}}

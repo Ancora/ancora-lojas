@@ -18,6 +18,7 @@ return new class extends Migration
             $table->unsignedInteger('user_id');
 
             $table->string('name');
+            $table->string('logo')->nullable();
             $table->boolean('status')->default(true);
             $table->text('description');
             $table->string('slug');

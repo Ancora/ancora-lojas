@@ -3,14 +3,14 @@
 @section('content')
     <div class="mx-10">
         <!-- Tabela de Lojas -->
-        <div class="w-full mt-20">
+        <div class="w-screen mt-20">
             <div class="w-11/12 mx-auto">
                 <button type="submit"
                     class="py-1 px-2 mb-2 bg-green-500 hover:bg-green-700 text-white font-bold border border-green-500 rounded">
                     <a href="{{ route('admin.shops.create') }}">Cadastrar Loja</a>
                 </button>
             </div>
-            <div class="w-full px-40 mx-auto bg-gradient-to-b from-blue-800 to-blue-600 h-80 rounded-t-3xl">
+            <div class="w-11/12 px-40 mx-auto bg-gradient-to-b from-blue-800 to-blue-600 h-80 rounded-t-3xl">
                 <div class="text-center mt-4 bg-transparent">
                     @include('common.alerts')
                 </div>

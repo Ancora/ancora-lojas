@@ -53,7 +53,25 @@ class ProductController extends Controller
         $product->categories()->sync($data['categories']);
         $product->colors()->sync($data['colors']);
 
+        if ($request->hasFile('photos')) {
+            $upPhotos = $this->photosUpload($request, 'photo_url');
+            $product->photos()->createMany($upPhotos);
+        }
+
         return Redirect::route('admin.products.create')->with('success', 'Produto cadastrado com sucesso!');
+    }
+
+    /* Carregar url das fotos */
+    private function photosUpload(Request $request, $photoColumn)
+    {
+        $upPhotos = $request->file('photos');
+        $uploadedPhotos = [];
+
+        foreach ($upPhotos as $upPhoto) {
+            $uploadedPhotos[] =  [$photoColumn => $upPhoto->store('products', 'public')];
+        }
+
+        return $uploadedPhotos;
     }
 
     /* Edição */

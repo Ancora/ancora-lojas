@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\CategoryRequest;
 use App\Http\Requests\ProductRequest;
 use App\Models\Category;
 use App\Models\Color;
@@ -41,8 +40,8 @@ class ProductController extends Controller
 
         if (Product::exists()) {
             //$last_product = $this->product->latest()->first();
-            $last_product = Product::latest()->first();
-            $next = $last_product['id'] + 1;
+            $lastProduct = Product::latest()->first();
+            $next = $lastProduct['id'] + 1;
         } else {
             $next = 1;
         }
@@ -83,7 +82,7 @@ class ProductController extends Controller
         return view('admin.products.edit', compact('product', 'shop', 'categories', 'colors'));
     }
 
-    public function update(ProductRequest $request, Product $product)
+    public function update(Product $product, ProductRequest $request)
     {
         $data = $request->validated();
         $data['slug'] = Str::slug($data['name']);

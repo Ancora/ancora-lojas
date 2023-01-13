@@ -33,16 +33,16 @@
                         <div class="w-full md:w-1/4 flex flex-col mr-2 mx-auto">
                             <label class="font-semibold leading-none text-gray-300 ">Situação</label>
                             <div class="flex flex-row mt-4 justify-evenly text-gray-300">
-                                <div class="flex items-center">
-                                    <input type="radio" name="status" id="ativo" value="Ativo"
-                                        class="form-radio mr-2">
-                                    <label for="ativo">Ativo</label>
-                                </div>
-                                <div class="flex items-center">
-                                    <input type="radio" name="status" id="inativo" value="Inativo"
-                                        class="form-radio mr-2">
-                                    <label for="inativo">Inativo</label>
-                                </div>
+                                <label>
+                                    <input type="radio" name="status" value="1"
+                                        {{ $product->status == 1 ? 'checked' : '' }}>
+                                    Ativo
+                                </label>
+                                <label>
+                                    <input type="radio" name="status" value="0"
+                                        {{ $product->status == 0 ? 'checked' : '' }}>
+                                    Inativo
+                                </label>
                             </div>
                             @error('status')
                                 <span class="text-red-600">
@@ -73,6 +73,7 @@
                             </span>
                         @enderror
                     </div>
+                    {{-- Estoque, Largura, Altura e Comprimento --}}
                     <div class="w-full flex flex-row mt-4">
                         {{-- Estoque --}}
                         <div class="w-1/4 mr-2 flex flex-col">
@@ -119,6 +120,7 @@
                             @enderror
                         </div>
                     </div>
+                    {{-- Lojas, Categorias e Cores --}}
                     <div class="w-full flex flex-row mt-4">
                         {{-- Lojas --}}
                         <div class="w-1/4 mr-2 flex flex-col">

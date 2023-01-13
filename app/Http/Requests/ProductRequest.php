@@ -29,7 +29,7 @@ class ProductRequest extends FormRequest
             'colors' => 'array|required',
             'code' => 'enum',
             'name' => 'required',
-            'status' => 'required',
+            'status' => 'boolean|required',
             /* 'name' => 'required|unique:products', */
             'description' => 'required|min:10',
             'price' => 'required',

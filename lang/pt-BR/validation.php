@@ -200,6 +200,7 @@ return [
         'factor'    => 'fator',
         'categories' => 'categorias',
         'colors'    => 'cores',
+        'status'    => 'situação',
         /*  */
         'zipcode'   => 'cep',
         'company_name'   => 'razão social',

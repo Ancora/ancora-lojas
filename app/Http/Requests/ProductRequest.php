@@ -29,6 +29,7 @@ class ProductRequest extends FormRequest
             'colors' => 'array|required',
             'code' => 'enum',
             'name' => 'required',
+            'status' => 'required',
             /* 'name' => 'required|unique:products', */
             'description' => 'required|min:10',
             'price' => 'required',
@@ -36,7 +37,7 @@ class ProductRequest extends FormRequest
             'width' => 'required',
             'height' => 'required',
             'length' => 'required',
-            'photos.*' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'photos.*' => 'nullable|image|mimes:jpeg,png,jpg,webp,svg|max:2048',
         ];
     }
 }

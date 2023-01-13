@@ -153,6 +153,22 @@
                             @enderror
                         </div>
                     </div>
+                    {{-- Fotos --}}
+                    <div class="w-full flex flex-row mt-4">
+                        <div class="flex flex-col">
+                            <label class="font-semilbold leading-none text-gray-300 mb-2">Fotos</label>
+                            <div class="border-2 border-blue-800 rounded-sm p-2">
+                                <input type="file" name="photos[]" multiple class="text-gray-300 rounded-sm">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid grid-flow-col auto-cols-fr">
+                        @foreach ($product->photos as $photo)
+                            <div class="border-2 border-blue-800 rounded-md p-1 m-1 grid place-items-center">
+                                <img src="{{ asset('storage/' . $photo->photo_url) }}" alt="">
+                            </div>
+                        @endforeach
+                    </div>
                     {{-- Botões --}}
                     <div class="flex w-full">
                         <div class="flex items-center justify-start w-1/2">

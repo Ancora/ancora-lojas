@@ -93,6 +93,11 @@ class ProductController extends Controller
         $product->categories()->sync($data['categories']);
         $product->colors()->sync($data['colors']);
 
+        if ($request->hasFile('photos')) {
+            $upPhotos = $this->photosUpload($request, 'photo_url');
+            $product->photos()->createMany($upPhotos);
+        }
+
         return Redirect::route('admin.products.index')->with('success', 'Produto alterado com sucesso!');
     }
 

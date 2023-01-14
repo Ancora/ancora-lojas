@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('shops', function (Blueprint $table) {
             $table->id();
-            $table->unsignedInteger('user_id');
+            /* $table->unsignedInteger('user_id'); */
 
             $table->string('name');
             $table->string('logo')->nullable();
@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('slug');
 
             $table->timestamps();
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+            /* $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade'); */
         });
     }
 

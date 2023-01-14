@@ -45,10 +45,10 @@ class User extends Authenticatable
 
     /* Relacionamentos */
     /* 1 user X N shops */
-    public function shops()
+    /* public function shops()
     {
         return $this->hasMany(Shop::class);
-    }
+    } */
 
     /* 1 user X N orders */
     public function orders()

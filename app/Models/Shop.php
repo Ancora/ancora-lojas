@@ -18,10 +18,10 @@ class Shop extends Model
 
     /* Relacionamentos */
     /* N shops X 1 user ???????????????????*/
-    public function user()
+    /* public function user()
     {
         return $this->belongsTo(User::class);
-    }
+    } */
 
     /* 1 shop X N products */
     public function products()

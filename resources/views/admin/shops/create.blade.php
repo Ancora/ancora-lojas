@@ -10,13 +10,13 @@
                 {{-- Form --}}
                 <form action="{{ route('admin.shops.store') }}" method="post" enctype="multipart/form-data">
                     @csrf
-                    <div>
+                    {{-- <div>
                         <select name="user">
                             @foreach ($users as $user)
                                 <option value="{{ $user->id }}">{{ $user->name }}</option>
                             @endforeach
                         </select>
-                    </div>
+                    </div> --}}
                     <div class="w-full flex flex-col md:flex-row mt-4">
                         {{-- Nome --}}
                         <div class="w-full md:w-3/4 mr-2 flex flex-col">

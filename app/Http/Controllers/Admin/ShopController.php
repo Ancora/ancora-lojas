@@ -23,22 +23,23 @@ class ShopController extends Controller
     /* Cadastro */
     public function create()
     {
-        $users = User::all(['id', 'name']);
+        /* $users = User::all(['id', 'name']);
 
-        return view('admin.shops.create', compact('users'));
+        return view('admin.shops.create', compact('users')); */
+        return view('admin.shops.create');
     }
 
     public function store(ShopRequest $request)
     {
-        $data = $request->all();
-        /* $data = $request->validated(); */
+        /* $data = $request->all(); */
+        $data = $request->validated();
         $data['slug'] = Str::slug($data['name']);
 
         /* Temporário */
-        $user = User::find($data['user']);
-        $shop = $user->shops()->create($data);
+        /* $user = User::find($data['user']);
+        $shop = $user->shops()->create($data); */
 
-        /* Shop::create($data); */
+        Shop::create($data);
 
         return Redirect::route('admin.shops.create')->with('success', 'Loja cadastrada com sucesso!');
     }

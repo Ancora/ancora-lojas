@@ -178,6 +178,11 @@
                             </div>
                         </div>
                     </div>
+                    @error('photos')
+                        <span class="text-red-600">
+                            {{ $message }}
+                        </span>
+                    @enderror
                     {{-- Botões --}}
                     <div class="flex w-full">
                         <div class="flex items-center justify-start w-1/2">
